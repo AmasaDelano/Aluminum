@@ -2,9 +2,12 @@
     "use strict";
 
     var time = document.all.time,
-        showTime = false,
+        showTime = !!($.cookie("showClock") && JSON.parse($.cookie("showClock"))),
         setColor = function (h, s, l) {
             document.body.style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
+        },
+        setTime = function (hours, minutes) {
+            time.innerHTML = (hours % 12 === 0 ? 12 : hours % 12) + ":" + ("0" + minutes).substr(-2, 2) + " " + (hours < 12 ? "am" : "pm");
         },
         getMillisecondsToday = function () {
             var date = new Date(),
@@ -15,13 +18,14 @@
                 milliseconds = date.getMilliseconds(),
                 millisecondsToday = milliseconds + seconds * 1000 + minutes * 60 * 1000 + hours * 60 * 60 * 1000;
 
-            time.innerHTML = (hours % 12 === 0 ? 12 : hours % 12) + ":" + ("0" + minutes).substr(-2, 2) + " " + (hours < 12 ? "am" : "pm");
+            setTime(hours, minutes);
 
             return millisecondsToday;
         },
         toggleShowTime = function () {
             showTime = !showTime;
             time.style.display = showTime ? "block" : "none";
+            $.cookie("showClock", showTime);
         },
         saturationFactor = 40, // from 0 - 100
         lightnessFactor = 30, // from 0 - 100
@@ -56,5 +60,6 @@
     updateColor();
     window.setInterval(updateColor, updateFrequency);
 
+    time.style.display = showTime ? "block" : "none";
     document.onclick = toggleShowTime;
 }());

@@ -15,9 +15,14 @@ namespace Aluminum
 
             // Javascript bundles
 
+            bundles.Add(new ScriptBundle("~/js/jquery").Include(
+                    "~/Scripts/jquery/jquery-2.1.3.min.js",
+                    "~/Scripts/jquery/jquery.cookie.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
-                    "~/Scripts/bootstrap/bootstrap.min.js",
-                    "~/Scripts/jquery/jquery-2.1.3.min.js"
+                    "~/Scripts/jquery/jquery-2.1.3.min.js",
+                    "~/Scripts/bootstrap/bootstrap.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/js/angular").Include(

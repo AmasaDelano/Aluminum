@@ -2,6 +2,7 @@
     "options": {
         "browser": true,
         "predef": {
+            "$": false,
             "angular": false
         }
     },
