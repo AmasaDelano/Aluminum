@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Manor.Controllers
+namespace Aluminum.Controllers
 {
     public class CostumeController : Controller
     {

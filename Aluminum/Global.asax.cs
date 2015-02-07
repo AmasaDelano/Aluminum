@@ -2,7 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace Manor
+namespace Aluminum
 {
     public class MvcApplication : System.Web.HttpApplication
     {

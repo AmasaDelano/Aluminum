@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace Manor
+namespace Aluminum
 {
     public class BundleConfig
     {

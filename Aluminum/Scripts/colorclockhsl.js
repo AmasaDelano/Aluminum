@@ -1,9 +1,11 @@
 ﻿(function () {
     "use strict";
 
-    var setColor = function (h, s, l) {
-        document.body.style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
-    },
+    var time = document.all.time,
+        showTime = false,
+        setColor = function (h, s, l) {
+            document.body.style.backgroundColor = "hsl(" + h + "," + s + "%," + l + "%)";
+        },
         getMillisecondsToday = function () {
             var date = new Date(),
 
@@ -11,10 +13,15 @@
                 minutes = date.getMinutes(),
                 seconds = date.getSeconds(),
                 milliseconds = date.getMilliseconds(),
-
                 millisecondsToday = milliseconds + seconds * 1000 + minutes * 60 * 1000 + hours * 60 * 60 * 1000;
 
+            time.innerHTML = (hours % 12 === 0 ? 12 : hours % 12) + ":" + ("0" + minutes).substr(-2, 2) + " " + (hours < 12 ? "am" : "pm");
+
             return millisecondsToday;
+        },
+        toggleShowTime = function () {
+            showTime = !showTime;
+            time.style.display = showTime ? "block" : "none";
         },
         saturationFactor = 40, // from 0 - 100
         lightnessFactor = 30, // from 0 - 100
@@ -48,4 +55,6 @@
 
     updateColor();
     window.setInterval(updateColor, updateFrequency);
+
+    document.onclick = toggleShowTime;
 }());
