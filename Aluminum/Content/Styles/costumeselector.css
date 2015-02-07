@@ -1,0 +1,10 @@
+﻿body {
+    background-color: black;
+    color: ghostwhite;
+}
+.container > div {
+    text-align: center;
+}
+input {
+    margin: 10px;
+}

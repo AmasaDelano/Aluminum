@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="techsupport">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>A Tech Site With Things</title>
+
+    @Styles.Render("~/css/bootstrap")
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/techsupport.css" />
+
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/angular")
+    <script src="~/Scripts/techsupport.js"></script>
+</head>
+<body ng-controller="TabController as tab">
+    <div class="container">
+
+        <header>
+            <h1>Alex's Tech Site</h1>
+        </header>
+
+        <nav>
+
+            <ul class="nav nav-pills">
+                <li role="presentation" ng-class="{ active: tab.isTab(1) }">
+                    <a href="#/support" ng-click="tab.setTab(1)">
+                        Support
+                    </a>
+                </li>
+                <li role="presentation" ng-class="{ active: tab.isTab(2) }">
+                    <a href="#/thoughts" ng-click="tab.setTab(2)">
+                        Thoughts
+                    </a>
+                </li>
+                <li role="presentation" ng-class="{ active: tab.isTab(3) }">
+                    <a href="#/contact" ng-click="tab.setTab(3)">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <section class="text-center" ng-show="tab.isTab(1)" ng-controller="OsController as os">
+
+            <h2>Remote Support</h2>
+
+                <div class="download-buttons-box">
+                    <article ng-repeat="possibleOs in os.possibleOses">
+
+                        <h3 ng-show="{{ os.multipleOses() }}">
+                            {{ possibleOs.displayName }} Support
+                        </h3>
+                        <div class="download-button">
+                            <a href="{{ possibleOs.downloadPath }}" target="_top">
+                                <img src="~/Content/Images/download.png"
+                                     alt="Click to Download Remote Tech Support"
+                                     title="Click to Download Remote Tech Support"
+                                     border="0"
+                                     width="200"
+                                     height="125" />
+
+                                <span>
+                                    Remote Tech Support
+                                    <br />
+                                    Download <label ng-show="{{ os.multipleOses() }}">for {{ possibleOs.displayName }}</label>
+                                </span>
+                            </a>
+                        </div>
+
+                    </article>
+                </div>
+
+        </section>
+
+        <section ng-show="tab.isTab(2)">
+            <h4>
+                Someday, I will write some thoughts here. Until then, find good thoughts <a href="http://c.xkcd.com/random/comic/" target="_blank">here</a>.
+            </h4>
+        </section>
+
+        <section class="text-center" ng-show="tab.isTab(3)">
+            <h4>Email</h4>
+            <h4>
+                <a href="mailto:alexfixesyourcomputer@gmail.com">
+                    alexfixesyourcomputer@gmail.com
+                </a>
+            </h4>
+            <h4>with questions, concerns, or inquiries.</h4>
+        </section>
+
+    </div>
+</body>
+</html>

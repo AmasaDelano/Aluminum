@@ -1,0 +1,17 @@
+﻿{
+    "options": {
+        "browser": true,
+        "predef": {
+            "angular": false
+        }
+    },
+    "ignore": [
+        "/scripts/jquery",
+        "/scripts/bootstrap",
+        "/scripts/angular"
+    ],
+    "output": "Error",
+    "runOnSave": false,
+    "runOnBuild": true,
+    "cancelBuild": true
+}

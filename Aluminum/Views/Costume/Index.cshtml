@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="costumeselector">
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Costume Selector</title>
+
+    @Styles.Render("~/css/bootstrap")
+
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css" />
+
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/angular")
+
+    <script src="~/Scripts/costumeselector.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h3>Someone with super powers?</h3>
+            <input type="button" class="btn btn-lg btn-success" value="Yes, super powers!" />
+            <input type="button" class="btn btn-lg btn-danger" value="No, thanks" />
+        </div>
+    </div>
+</body>
+</html>
