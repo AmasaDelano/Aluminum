@@ -8,12 +8,12 @@
 
     @Styles.Render("~/css/bootstrap")
 
-    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
 
     @Scripts.Render("~/js/bootstrap")
     @Scripts.Render("~/js/angular")
 
-    <script src="~/Scripts/costumeselector.js"></script>
+    <script src="~/Scripts/costumeselector.js?v=@Html.Version()"></script>
 </head>
 <body>
     <div class="container">

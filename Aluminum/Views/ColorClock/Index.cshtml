@@ -5,30 +5,16 @@
     <meta name="viewport" content="width=device-width" />
     <title>Color Clock</title>
     @Styles.Render("~/css/bootstrap")
-    <style>
-        #time {
-            font-size: 6em;
-            position: absolute;
-            bottom: 50px;
-            right: 75px;
-            display: none;
-            /* Not selectable */
-            cursor: default;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/clock.css?v=@Html.Version()" />
 </head>
 <body>
     <noscript>
         <h1>You need Javascript enabled to view this page.</h1>
     </noscript>
-    <h1 id="time"></h1>
+    <div class="container">
+        <h1 id="time"></h1>
+    </div>
     @Scripts.Render("~/js/jquery")
-    <script src="~/Scripts/colorclockhsl.js?v=0.1"></script>
+    <script src="~/Scripts/colorclockhsl.js?v=@Html.Version()"></script>
 </body>
 </html>

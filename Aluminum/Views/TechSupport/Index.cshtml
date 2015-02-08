@@ -7,11 +7,11 @@
     <title>A Tech Site With Things</title>
 
     @Styles.Render("~/css/bootstrap")
-    <link rel="stylesheet" type="text/css" href="~/Content/Styles/techsupport.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/techsupport.css?v=@Html.Version()" />
 
     @Scripts.Render("~/js/bootstrap")
     @Scripts.Render("~/js/angular")
-    <script src="~/Scripts/techsupport.js"></script>
+    <script src="~/Scripts/techsupport.js?v=@Html.Version()"></script>
 </head>
 <body ng-controller="TabController as tab">
     <div class="container">

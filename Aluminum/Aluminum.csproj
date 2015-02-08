@@ -108,6 +108,7 @@
     <Content Include="Content\Styles\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Styles\bootstrap\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\Styles\clock.css" />
     <Content Include="Content\Styles\costumeselector.css" />
     <Content Include="Content\Styles\techsupport.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -146,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ColorClockController.cs" />
     <Compile Include="Controllers\CostumeController.cs" />
+    <Compile Include="Controllers\HtmlHelperExtensions.cs" />
     <Compile Include="Controllers\TechSupportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
