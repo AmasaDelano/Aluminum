@@ -1,9 +1,12 @@
-﻿#time {
-    font-size: 5em;
+﻿div.container {
     position: absolute;
-    text-align: right;
     bottom: 50px;
-    width: 90%;
+    width: 95%;
+}
+
+#time {
+    font-size: 5em;
+    text-align: right;
     display: none;
     /* Not selectable */
     cursor: default;
