@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>The Aluminum Experiment</title>
+    @Styles.Render("~/css/bootstrap")
+</head>
+<body style="background-color: #9EA0A1;">
+
+    <div class="container">
+        <h1 class="text-danger" style="margin-top: 3em;">
+            <u>Sites:</u>
+        </h1>
+
+        <ul>
+            <li>
+                <h2>
+                    <a href="@Url.Action("Index", "ColorClock")">
+                        Color Clock
+                    </a>
+                </h2>
+            </li>
+
+            <li>
+                <h2>
+                    <a href="@Url.Action("Index", "TechSupport")">
+                        Alex Fixes Your Computer
+                    </a>
+                </h2>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

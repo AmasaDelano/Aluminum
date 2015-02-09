@@ -19,8 +19,8 @@ namespace Aluminum
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}",
-                defaults: new { controller = "ColorClock", action = "Index" }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" }
             );
         }
     }

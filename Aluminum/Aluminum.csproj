@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ColorClockController.cs" />
     <Compile Include="Controllers\CostumeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlHelperExtensions.cs" />
     <Compile Include="Controllers\TechSupportController.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,6 +166,7 @@
     <Content Include="JSLintNet.json" />
     <Content Include="Views\TechSupport\Index.cshtml" />
     <Content Include="Views\Costume\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
