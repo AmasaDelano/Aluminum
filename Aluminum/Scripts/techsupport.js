@@ -1,9 +1,9 @@
 (function () {
     "use strict";
 
-    var APP = angular.module("techsupport", ['ngRoute']);
+    var app = angular.module("techsupport", ['ngRoute']);
 
-    APP.controller("TabController", function ($location) {
+    app.controller("TabController", function ($location) {
         var tabCtrl = this,
             tabs = ["support", "thoughts", "contact"],
             routeTabName = $location.path().substr(1),
@@ -22,7 +22,7 @@
         tabCtrl.setTab = setTab;
     });
 
-    APP.controller("OsController", function () {
+    app.controller("OsController", function () {
         var osCtrl = this,
             platform = navigator.userAgent,
             supportedOses = [

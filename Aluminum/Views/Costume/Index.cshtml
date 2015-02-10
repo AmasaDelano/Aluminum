@@ -17,10 +17,26 @@
 </head>
 <body>
     <div class="container">
-        <div>
-            <h3>Someone with super powers?</h3>
-            <input type="button" class="btn btn-lg btn-success" value="Yes, super powers!" />
-            <input type="button" class="btn btn-lg btn-danger" value="No, thanks" />
+        <div ng-controller="QuestionController as questions">
+            <header>
+                <h5 ng-repeat="answer in questions.answered" ng-click="questions.revisitQuestion(answer)" class="notSelectable">
+                    {{ answer.answered }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.isYes, 'glyphicon-remove': !answer.isYes }"></span>
+                </h5>
+            </header>
+            
+            <div ng-show="questions.hasQuestionsLeft()">
+                <h3>
+                    {{ questions.getCurrentQuestion().question }}
+                </h3>
+                <input type="button" class="btn btn-lg btn-success" value="Yes!" ng-click="questions.answerCurrentQuestion(true)" />
+                <input type="button" class="btn btn-lg btn-danger" value="No, thanks" ng-click="questions.answerCurrentQuestion(false)" />
+            </div>
+            @*<img src="~/Content/Images/loading.gif" alt="Loading..." ng-show="!questions.hasQuestionsLeft()"/>*@
+            <div ng-show="!questions.hasQuestionsLeft()">
+                <h1>
+                    {{ questions.getBestCostume().name }}
+                </h1>
+            </div>
         </div>
     </div>
 </body>

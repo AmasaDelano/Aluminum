@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\download.png" />
+    <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Styles\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\Styles\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Styles\bootstrap\bootstrap.css" />
@@ -111,7 +112,7 @@
     <Content Include="Content\Styles\clock.css" />
     <Content Include="Content\Styles\costumeselector.css" />
     <Content Include="Content\Styles\techsupport.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Styles\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\angular\angular-mocks.js" />
     <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular-route.min.js" />
@@ -121,9 +122,9 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\colorclockhsl.js" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Styles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Styles\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Styles\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\Styles\bootstrap\bootstrap.css.map" />
     <Content Include="Scripts\angular\angular.min.js.map" />

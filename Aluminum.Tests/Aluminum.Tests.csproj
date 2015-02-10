@@ -71,7 +71,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Aluminum\Aluminum.csproj">
       <Project>{7FE7867A-3591-43E4-82DB-A1AF196D950C}</Project>
-      <Name>Manor</Name>
+      <Name>Aluminum</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
