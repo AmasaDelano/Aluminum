@@ -55,7 +55,7 @@
                         // If the value of the data field that the answer answered
                         // is the same as the answer given to the answer,
                         // increase this costume's rating.
-                        if (!!costume[answer.dataField] === !!answer.isYes) {
+                        if (!!costume.properties[answer.dataField] === !!answer.isYes) {
                             costumeRatings[costumeIndex] += 1;
                         }
                     }

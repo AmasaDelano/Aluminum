@@ -14,7 +14,9 @@ namespace Aluminum
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             JsonConfig.Configure();
+            MapperConfig.RegisterMaps();
 
+            DependencyConfig.RegisterDependencies();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

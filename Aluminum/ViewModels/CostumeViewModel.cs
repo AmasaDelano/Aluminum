@@ -1,10 +1,11 @@
-﻿namespace Aluminum.ViewModels
+﻿using System.Collections.Generic;
+
+namespace Aluminum.ViewModels
 {
     public class CostumeViewModel
     {
         public string Name { get; set; }
-        public bool HasSuperPowers { get; set; }
-        public bool HasPants { get; set; }
-        public bool IsHuman { get; set; }
+        public string ImageFileName { get; set; }
+        public Dictionary<string, bool> Properties { get; set; } 
     }
 }

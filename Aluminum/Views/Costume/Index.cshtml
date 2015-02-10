@@ -26,7 +26,7 @@
                     {{ answer.answered }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.isYes, 'glyphicon-remove': !answer.isYes }"></span>
                 </h5>
             </header>
-            
+
             <div ng-show="questions.hasQuestionsLeft()" ng-hide="questions.isLoading()">
                 <h3>
                     {{ questions.getCurrentQuestion().question }}
@@ -34,11 +34,14 @@
                 <input type="button" class="btn btn-lg btn-success" value="Yes!" ng-click="questions.answerCurrentQuestion(true)" />
                 <input type="button" class="btn btn-lg btn-danger" value="No, thanks" ng-click="questions.answerCurrentQuestion(false)" />
             </div>
-            <img src="~/Content/Images/loading.gif" alt="Loading..." ng-show="questions.isLoading()"/>
+            <img src="~/Content/Images/loading.gif" alt="Loading..." ng-show="questions.isLoading()" />
             <div ng-show="!questions.hasQuestionsLeft() && !questions.isLoading()">
                 <h1>
                     {{ questions.getBestCostume().name }}
                 </h1>
+                <img ng-src="~/Content/Images/Costumes/{{ questions.getBestCostume().imageFileName }}"
+                     alt="{{ questions.getBestCostume().name }}"
+                     ng-show="questions.isLoading()" />
             </div>
         </div>
     </div>
