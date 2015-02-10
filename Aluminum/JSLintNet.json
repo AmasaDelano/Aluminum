@@ -1,6 +1,7 @@
 ﻿{
     "options": {
         "browser": true,
+        "devel": true,
         "predef": {
             "$": false,
             "angular": false

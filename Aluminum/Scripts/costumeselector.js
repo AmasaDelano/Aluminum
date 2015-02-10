@@ -1,80 +1,12 @@
 (function () {
     "use strict";
 
-    var app = angular.module("costumeselector");
+    var app = angular.module("costumeselector", []);
 
-    app.controller("QuestionController", function () {
+    app.controller("QuestionController", ['$http', function ($http) {
         var that = this,
-            questions = [
-                {
-                    question: "Someone with super powers?",
-                    answered: "Has super powers",
-                    dataField: "HasSuperPowers",
-                    isYes: false
-                },
-                {
-                    question: "Someone with pants?",
-                    answered: "Has pants",
-                    dataField: "HasPants",
-                    isYes: false
-                },
-                {
-                    question: "Human?",
-                    answered: "Human",
-                    dataField: "IsHuman",
-                    isYes: false
-                }
-            ],
-            costumes = [
-                {
-                    name: "Spiderman",
-                    HasSuperPowers: true,
-                    HasPants: true,
-                    IsHuman: true
-                },
-                {
-                    name: "Phillip Fry",
-                    HasSuperPowers: false,
-                    HasPants: true,
-                    IsHuman: true
-                },
-                {
-                    name: "Wonder Woman",
-                    HasSuperPowers: true,
-                    HasPants: false,
-                    IsHuman: true
-                },
-                {
-                    name: "Superman",
-                    HasSuperPowers: true,
-                    HasPants: true,
-                    IsHuman: false
-                },
-                {
-                    name: "Cinderella",
-                    HasSuperPowers: false,
-                    HasPants: false,
-                    IsHuman: true
-                },
-                {
-                    name: "Kif Kroker",
-                    HasSuperPowers: false,
-                    HasPants: true,
-                    IsHuman: false
-                },
-                {
-                    name: "????",
-                    HasSuperPowers: true,
-                    HasPants: false,
-                    IsHuman: false
-                },
-                {
-                    name: "Gary the Snail",
-                    HasSuperPowers: false,
-                    HasPants: false,
-                    IsHuman: false
-                }
-            ],
+            questions = [],
+            costumes = [],
             answered = [],
             currentQuestionIndex = 0,
             getCurrentQuestion = function () {
@@ -96,7 +28,10 @@
                 currentQuestionIndex += 1;
             },
             hasQuestionsLeft = function () {
-                return questions.length >= 0 && questions.length > currentQuestionIndex;
+                return questions.length > currentQuestionIndex;
+            },
+            isLoading = function () {
+                return questions.length === 0 || costumes.length === 0;
             },
             getBestCostume = function () {
                 var costumeRatings = [],
@@ -139,14 +74,26 @@
                 return costumes[bestCostumeIndex];
             };
 
-        that.questions = questions;
+        // Get question and costume data from the server.
+        $http.get("/api/costumeApi/GetQuestions").success(function (data) {
+            questions = data;
+        }).error(function () {
+            alert("Problem getting questions.");
+        });
+        $http.get("/api/costumeApi/GetCostumes").success(function (data) {
+            costumes = data;
+        }).error(function () {
+            alert("Problem getting costumes.");
+        });
+
         that.getCurrentQuestion = getCurrentQuestion;
         that.answered = answered;
         that.answerCurrentQuestion = answerCurrentQuestion;
         that.hasQuestionsLeft = hasQuestionsLeft;
         that.revisitQuestion = revisitQuestion;
         that.getBestCostume = getBestCostume;
+        that.isLoading = isLoading;
 
         return that;
-    });
+    }]);
 }());
