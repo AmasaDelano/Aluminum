@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Web.Mvc;
 
 namespace Aluminum
@@ -9,7 +10,7 @@ namespace Aluminum
 
         public static string Version(this HtmlHelper htmlHelper)
         {
-            return _version;
+            return DateTime.Now.ToString();
         }
     }
 }

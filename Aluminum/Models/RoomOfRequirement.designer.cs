@@ -98,13 +98,7 @@ namespace Aluminum.Models
 		
 		private bool _IsHuman;
 		
-		private bool _IsHumanoid;
-		
 		private bool _IsAnimal;
-		
-		private bool _IsAlien;
-		
-		private bool _IsThing;
 		
 		private bool _HasSuperPowers;
 		
@@ -114,17 +108,13 @@ namespace Aluminum.Models
 		
 		private bool _HasShoes;
 		
-		private bool _HasBoots;
-		
 		private bool _HasHat;
 		
 		private bool _HasCape;
 		
-		private bool _HasScarf;
-		
-		private bool _HasDyedHair;
-		
 		private bool _HasFacialHair;
+		
+		private bool _HasBowtie;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -140,14 +130,8 @@ namespace Aluminum.Models
     partial void OnGenderTypeIDChanged();
     partial void OnIsHumanChanging(bool value);
     partial void OnIsHumanChanged();
-    partial void OnIsHumanoidChanging(bool value);
-    partial void OnIsHumanoidChanged();
     partial void OnIsAnimalChanging(bool value);
     partial void OnIsAnimalChanged();
-    partial void OnIsAlienChanging(bool value);
-    partial void OnIsAlienChanged();
-    partial void OnIsThingChanging(bool value);
-    partial void OnIsThingChanged();
     partial void OnHasSuperPowersChanging(bool value);
     partial void OnHasSuperPowersChanged();
     partial void OnHasPantsChanging(bool value);
@@ -156,18 +140,14 @@ namespace Aluminum.Models
     partial void OnHasShirtChanged();
     partial void OnHasShoesChanging(bool value);
     partial void OnHasShoesChanged();
-    partial void OnHasBootsChanging(bool value);
-    partial void OnHasBootsChanged();
     partial void OnHasHatChanging(bool value);
     partial void OnHasHatChanged();
     partial void OnHasCapeChanging(bool value);
     partial void OnHasCapeChanged();
-    partial void OnHasScarfChanging(bool value);
-    partial void OnHasScarfChanged();
-    partial void OnHasDyedHairChanging(bool value);
-    partial void OnHasDyedHairChanged();
     partial void OnHasFacialHairChanging(bool value);
     partial void OnHasFacialHairChanged();
+    partial void OnHasBowtieChanging(bool value);
+    partial void OnHasBowtieChanged();
     #endregion
 		
 		public Costume()
@@ -275,26 +255,6 @@ namespace Aluminum.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHumanoid", DbType="Bit NOT NULL")]
-		public bool IsHumanoid
-		{
-			get
-			{
-				return this._IsHumanoid;
-			}
-			set
-			{
-				if ((this._IsHumanoid != value))
-				{
-					this.OnIsHumanoidChanging(value);
-					this.SendPropertyChanging();
-					this._IsHumanoid = value;
-					this.SendPropertyChanged("IsHumanoid");
-					this.OnIsHumanoidChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAnimal", DbType="Bit NOT NULL")]
 		public bool IsAnimal
 		{
@@ -311,46 +271,6 @@ namespace Aluminum.Models
 					this._IsAnimal = value;
 					this.SendPropertyChanged("IsAnimal");
 					this.OnIsAnimalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAlien", DbType="Bit NOT NULL")]
-		public bool IsAlien
-		{
-			get
-			{
-				return this._IsAlien;
-			}
-			set
-			{
-				if ((this._IsAlien != value))
-				{
-					this.OnIsAlienChanging(value);
-					this.SendPropertyChanging();
-					this._IsAlien = value;
-					this.SendPropertyChanged("IsAlien");
-					this.OnIsAlienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsThing", DbType="Bit NOT NULL")]
-		public bool IsThing
-		{
-			get
-			{
-				return this._IsThing;
-			}
-			set
-			{
-				if ((this._IsThing != value))
-				{
-					this.OnIsThingChanging(value);
-					this.SendPropertyChanging();
-					this._IsThing = value;
-					this.SendPropertyChanged("IsThing");
-					this.OnIsThingChanged();
 				}
 			}
 		}
@@ -435,26 +355,6 @@ namespace Aluminum.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasBoots", DbType="Bit NOT NULL")]
-		public bool HasBoots
-		{
-			get
-			{
-				return this._HasBoots;
-			}
-			set
-			{
-				if ((this._HasBoots != value))
-				{
-					this.OnHasBootsChanging(value);
-					this.SendPropertyChanging();
-					this._HasBoots = value;
-					this.SendPropertyChanged("HasBoots");
-					this.OnHasBootsChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasHat", DbType="Bit NOT NULL")]
 		public bool HasHat
 		{
@@ -495,46 +395,6 @@ namespace Aluminum.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasScarf", DbType="Bit NOT NULL")]
-		public bool HasScarf
-		{
-			get
-			{
-				return this._HasScarf;
-			}
-			set
-			{
-				if ((this._HasScarf != value))
-				{
-					this.OnHasScarfChanging(value);
-					this.SendPropertyChanging();
-					this._HasScarf = value;
-					this.SendPropertyChanged("HasScarf");
-					this.OnHasScarfChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasDyedHair", DbType="Bit NOT NULL")]
-		public bool HasDyedHair
-		{
-			get
-			{
-				return this._HasDyedHair;
-			}
-			set
-			{
-				if ((this._HasDyedHair != value))
-				{
-					this.OnHasDyedHairChanging(value);
-					this.SendPropertyChanging();
-					this._HasDyedHair = value;
-					this.SendPropertyChanged("HasDyedHair");
-					this.OnHasDyedHairChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasFacialHair", DbType="Bit NOT NULL")]
 		public bool HasFacialHair
 		{
@@ -551,6 +411,26 @@ namespace Aluminum.Models
 					this._HasFacialHair = value;
 					this.SendPropertyChanged("HasFacialHair");
 					this.OnHasFacialHairChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasBowtie", DbType="Bit NOT NULL")]
+		public bool HasBowtie
+		{
+			get
+			{
+				return this._HasBowtie;
+			}
+			set
+			{
+				if ((this._HasBowtie != value))
+				{
+					this.OnHasBowtieChanging(value);
+					this.SendPropertyChanging();
+					this._HasBowtie = value;
+					this.SendPropertyChanged("HasBowtie");
+					this.OnHasBowtieChanged();
 				}
 			}
 		}

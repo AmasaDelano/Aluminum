@@ -203,6 +203,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CostumeService.cs" />
+    <Compile Include="Models\GenderType.cs" />
     <Compile Include="Models\RoomOfRequirement.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

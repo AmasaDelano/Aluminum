@@ -24,6 +24,7 @@ namespace Aluminum
                         }
 
                         e.CostumeID = v.Id;
+                        e.GenderTypeID = (byte) GenderType.Male;
                     });
 
             Mapper.CreateMap<Costume, CostumeViewModel>()
