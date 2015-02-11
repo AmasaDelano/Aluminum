@@ -224,6 +224,9 @@
     <Content Include="Views\TechSupport\Index.cshtml" />
     <Content Include="Views\Costume\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Costume\Admin.cshtml" />
+    <Content Include="Views\Costume\_AdminLayout.cshtml" />
+    <Content Include="Views\Costume\EditCostume.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

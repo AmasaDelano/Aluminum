@@ -1,0 +1,53 @@
+﻿@model CostumeViewModel
+
+@{
+    ViewBag.Title = (Model.Id == 0 ? "New" : "Edit") + " Costume";
+    Layout = "_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>@(Model.Id == 0 ? "New" : Model.Name) Costume</h2>
+        
+        <form method="POST" action="@Url.Action("SaveCostume")">
+            <input type="hidden" value="@Model.Id" name="Id" />
+            
+            <button class="btn btn-default" onclick="window.location = '@Url.Action("Admin")'; return false;">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+                
+            <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                Save
+            </button>
+            <br />
+            <br />
+
+            <fieldset>
+                <div class="input-group">
+                    <span class="input-group-addon" id="name-addon">Name</span>
+                    <input type="text" class="form-control" name="Name" aria-describedby="name-addon" value="@Model.Name" />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="file-addon">Image file</span>
+                    <input type="file" class="form-control" name="ImageFileName" aria-describedby="file-addon" />
+                </div>
+            </fieldset>
+            <br/>
+            <fieldset style="max-width: 200px;">
+                @foreach (var property in Model.Properties.OrderBy(e => e.Key))
+                {
+                    <div class="input-group">
+                        <label class="form-control text-right" for="@property.Key">@property.Key</label>
+                        <label class="input-group-addon" for="@property.Key">
+                            <input type="checkbox" id="@property.Key" name="Properties[@property.Key]"
+                                   value="true" @(property.Value ? "checked='checked'" : "") />
+                        </label>
+                    </div>
+                }
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -14,7 +14,7 @@ namespace Aluminum
         {
             var container = new Container();
 
-            container.Register<DataContext>(() => new RoomOfRequirementDataContext());
+            container.RegisterPerWebRequest<DataContext>(() => new RoomOfRequirementDataContext());
 
             container.Verify();
 

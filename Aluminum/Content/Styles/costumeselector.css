@@ -2,14 +2,27 @@
     background-color: black;
     color: ghostwhite;
 }
-.container > div {
+#costume-selector {
     text-align: center;
 }
-input {
+#costume-selector input {
     margin: 10px;
 }
+table {
+    margin: 10px;
+}
+.input-group > span.input-group-addon {
+    -moz-min-width: 90px;
+    -ms-min-width: 90px;
+    -o-min-width: 90px;
+    -webkit-min-width: 90px;
+    min-width: 90px;
+}
+button {
+    display: inline-block;
+}
 header {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 .notSelectable {
     cursor: default;

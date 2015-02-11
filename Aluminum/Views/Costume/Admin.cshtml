@@ -1,0 +1,57 @@
+﻿@model List<CostumeViewModel>
+
+@{
+    ViewBag.Title = "Costume Admin Page";
+    Layout = "_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-8 col-md-6 col-lg-4">
+        <header>
+            <h2>Costumes</h2>
+        </header>
+        
+        @if (TempData["SavedMessage"] != null)
+        {
+            <p class="alert alert-success">
+                @TempData["SavedMessage"]
+            </p>
+        }
+
+        <table class="table table-bordered table-responsive">
+            <tbody>
+                @foreach (var costume in Model.OrderBy(e => e.Name))
+                {
+                    <tr>
+                        <td>@costume.Name</td>
+                        <td>
+                            <form action="@Url.Action("EditCostume")">
+                                <input type="hidden" value="@costume.Id" name="costumeId"/>
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Edit
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="@Url.Action("DeleteCostume", new { costumeId = costume.Id })">
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure you want to delete this costume? This cannot be undone.')">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <form method="POST" action="@Url.Action("AddCostume")">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add New Costume
+            </button>
+        </form>
+    </div>
+</div>
