@@ -18,9 +18,9 @@
                 currentQuestionIndex = questionIndex;
                 answered.length = answeredIndex;
             },
-            answerQuestion = function (questionIndex, isYes) {
+            answerQuestion = function (questionIndex, answer) {
                 var question = questions[questionIndex];
-                question.isYes = !!isYes;
+                question.answer = answer;
                 answered.push(question);
             },
             getPossibleCostumes = function () {
@@ -36,7 +36,7 @@
                     possible = true;
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
-                        if (costume.properties[answer.dataField] !== answer.isYes) {
+                        if (costume.properties[answer.dataField] !== answer.answer) {
                             possible = false;
                             break;
                         }
@@ -118,8 +118,8 @@
 
                 return bestQuestionIndex;
             },
-            answerCurrentQuestion = function (isYes) {
-                answerQuestion(currentQuestionIndex, isYes);
+            answerCurrentQuestion = function (answer) {
+                answerQuestion(currentQuestionIndex, answer);
                 currentQuestionIndex = getNextQuestionIndex();
             },
             hasQuestionsLeft = function () {

@@ -17,10 +17,10 @@ namespace Aluminum
                     {
                         Type costumeType = typeof(Costume);
 
-                        foreach (var property in v.Properties)
+                        foreach (var propertyName in v.Properties)
                         {
-                            var boolProperty = costumeType.GetProperty(property.Key);
-                            boolProperty.SetValue(e, property.Value);
+                            var property = costumeType.GetProperty(propertyName.Key);
+                            property.SetValue(e, propertyName.Value);
                         }
 
                         e.CostumeID = v.Id;
@@ -31,13 +31,16 @@ namespace Aluminum
                 .AfterMap(
                     (e, v) =>
                     {
-                        var boolProperties = typeof(Costume).GetProperties().Where(b => b.PropertyType == typeof(bool));
+                        var properties = typeof(Costume).GetProperties()
+                            .Where(b =>
+                                b.PropertyType == typeof(bool) ||
+                                b.PropertyType == typeof(byte));
 
-                        v.Properties = new Dictionary<string, bool>();
+                        v.Properties = new Dictionary<string, short>();
 
-                        foreach (var boolProperty in boolProperties)
+                        foreach (var property in properties)
                         {
-                            v.Properties.Add(boolProperty.Name, (bool) boolProperty.GetValue(e));
+                            v.Properties.Add(property.Name, Convert.ToInt16(property.GetValue(e)));
                         }
 
                         v.Id = e.CostumeID;
