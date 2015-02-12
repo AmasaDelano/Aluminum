@@ -28,7 +28,7 @@ namespace Aluminum.Models
         public List<QuestionViewModel> GetQuestions()
         {
             var questionEntities = Questions
-                .OrderBy(e => e.SortOrder)
+                .OrderBy(e => e.DataField)
                 .ToList();
 
             var questions = Mapper.Map<List<QuestionViewModel>>(questionEntities);

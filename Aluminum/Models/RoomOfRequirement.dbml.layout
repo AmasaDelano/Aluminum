@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="RoomOfRequirement">
   <DataContextMoniker Name="/RoomOfRequirementDataContext" />
   <nestedChildShapes>
-    <classShape Id="8b366d74-2045-4ad5-985a-de48dc907b29" absoluteBounds="4.75, 1.625, 2, 3.1072981308897329">
-      <DataClassMoniker Name="/RoomOfRequirementDataContext/Costume" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff8b66b4-04bf-4939-8adf-3fdbcc91bed5" absoluteBounds="4.765, 2.085, 1.9700000000000002, 2.5472981308897333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4aaf3a11-49af-4108-ac85-c2b0c55307b0" absoluteBounds="2, 1.625, 2, 1.4386783690253895">
+    <classShape Id="3d544576-e4cf-4016-845a-187df2feab17" absoluteBounds="3.875, 2, 2, 1.271816392838955">
       <DataClassMoniker Name="/RoomOfRequirementDataContext/CostumeQuestion" />
       <nestedChildShapes>
-        <elementListCompartment Id="4d01227d-3b21-4234-a9b9-dfd1fac11dcf" absoluteBounds="2.0149999999999997, 2.085, 1.9700000000000002, 0.87867836902538943" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b444c9aa-d4d8-418e-af2d-1f31a71985b7" absoluteBounds="3.8899999999999997, 2.46, 1.9700000000000002, 0.71181639283895493" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46201ef0-6702-487c-a71d-1dfad92ed747" absoluteBounds="1.5, 1.375, 2, 2.2729882499575615">
+      <DataClassMoniker Name="/RoomOfRequirementDataContext/Costume" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8ab4a2e-f8ec-4312-bdd4-75c1ee38d824" absoluteBounds="1.5149999999999997, 1.835, 1.9700000000000002, 1.7129882499575615" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
