@@ -8,7 +8,7 @@
             questions = [],
             costumes = [],
             answered = [],
-            currentQuestionIndex = 0,
+            currentQuestionIndex = -1,
             getCurrentQuestion = function () {
                 return questions[currentQuestionIndex];
             },
@@ -23,65 +23,130 @@
                 question.isYes = !!isYes;
                 answered.push(question);
             },
+            getPossibleCostumes = function () {
+                var possibleCostumes = [],
+                    costumeIndex,
+                    costume,
+                    answerIndex,
+                    answer,
+                    possible;
+
+                for (costumeIndex = 0; costumeIndex < costumes.length; costumeIndex += 1) {
+                    costume = costumes[costumeIndex];
+                    possible = true;
+                    for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
+                        answer = answered[answerIndex];
+                        if (costume.properties[answer.dataField] !== answer.isYes) {
+                            possible = false;
+                            break;
+                        }
+                    }
+                    if (possible) {
+                        possibleCostumes.push(costume);
+                    }
+                }
+
+                return possibleCostumes;
+            },
+            getIndexOfHighestItem = function (array) {
+                var index,
+                    highestItem = 0,
+                    indexOfHighestItem = 0;
+
+                for (index = 0; index < array.length; index += 1) {
+                    if (array[index] > highestItem) {
+                        highestItem = array[index];
+                        indexOfHighestItem = index;
+                    }
+                }
+
+                return indexOfHighestItem;
+            },
+            getNextQuestionIndex = function () {
+                var questionRatings = [],
+                    possibleCostumes,
+                    bestQuestionIndex,
+                    questionIndex,
+                    question,
+                    costumeIndex,
+                    costume,
+                    oneRatingIsGood;
+
+                // If there is only one costume that fits the criteria, we are done.
+                possibleCostumes = getPossibleCostumes();
+
+                if (possibleCostumes.length === 1) {
+                    return -1;
+                }
+
+                for (questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
+                    questionRatings[questionIndex] = 0;
+                }
+
+                for (questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
+                    question = questions[questionIndex];
+                    if (answered.indexOf(question) === -1) {
+                        for (costumeIndex = 0; costumeIndex < possibleCostumes.length; costumeIndex += 1) {
+                            costume = possibleCostumes[costumeIndex];
+                            if (!!costume.properties[question.dataField]) {
+                                questionRatings[questionIndex] += 1;
+                            }
+                        }
+                    }
+                }
+
+                oneRatingIsGood = false;
+                for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
+                    questionRatings[questionIndex] =
+                        possibleCostumes.length -
+                        Math.abs(possibleCostumes.length - questionRatings[questionIndex] * 2);
+
+                    if (questionRatings[questionIndex] > 0) {
+                        oneRatingIsGood = true;
+                    }
+                }
+
+                if (!oneRatingIsGood) {
+                    return -1;
+                }
+
+                bestQuestionIndex = getIndexOfHighestItem(questionRatings);
+
+                if (answered.indexOf(questions[bestQuestionIndex]) !== -1) {
+                    return -1;
+                }
+
+                return bestQuestionIndex;
+            },
             answerCurrentQuestion = function (isYes) {
                 answerQuestion(currentQuestionIndex, isYes);
-                currentQuestionIndex += 1;
+                currentQuestionIndex = getNextQuestionIndex();
             },
             hasQuestionsLeft = function () {
-                return questions.length > currentQuestionIndex;
+                return questions.length > currentQuestionIndex && currentQuestionIndex >= 0;
             },
             isLoading = function () {
                 return questions.length === 0 || costumes.length === 0;
             },
             getBestCostume = function () {
-                var costumeRatings = [],
-                    costumeIndex,
-                    costume,
-                    answeredIndex,
-                    answer,
-                    bestCostumeIndex,
-                    highestCostumeRating;
-
-                for (costumeIndex = 0; costumeIndex < costumes.length; costumeIndex += 1) {
-                    costumeRatings.push(0);
-                }
-
-                // Rate the costumes based on the answered questions.
-                for (answeredIndex = 0; answeredIndex < answered.length; answeredIndex += 1) {
-                    answer = answered[answeredIndex];
-                    for (costumeIndex = 0; costumeIndex < costumes.length; costumeIndex += 1) {
-                        costume = costumes[costumeIndex];
-
-                        // If the value of the data field that the answer answered
-                        // is the same as the answer given to the answer,
-                        // increase this costume's rating.
-                        if (!!costume.properties[answer.dataField] === !!answer.isYes) {
-                            costumeRatings[costumeIndex] += 1;
-                        }
-                    }
-                }
-
-                // Get the index of the highest rated costume.
-                highestCostumeRating = 0;
-                bestCostumeIndex = 0;
-                for (costumeIndex = 0; costumeIndex < costumeRatings.length; costumeIndex += 1) {
-                    if (costumeRatings[costumeIndex] > highestCostumeRating) {
-                        highestCostumeRating = costumeRatings[costumeIndex];
-                        bestCostumeIndex = costumeIndex;
-                    }
-                }
-
-                return costumes[bestCostumeIndex];
+                var possibleCostumes = getPossibleCostumes();
+                return possibleCostumes[0];
             };
 
         // Get question and costume data from the server.
         $http.get("/api/costumeApi/GetQuestions").success(function (data) {
             questions = data;
+            if (costumes.length > 0) {
+                currentQuestionIndex = getNextQuestionIndex();
+            }
         }).error(function () {
             alert("Problem getting questions.");
         });
         $http.get("/api/costumeApi/GetCostumes").success(function (data) {
             costumes = data;
+            if (questions.length > 0) {
+                currentQuestionIndex = getNextQuestionIndex();
+            }
         }).error(function () {
             alert("Problem getting costumes.");
         });

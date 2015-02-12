@@ -6,11 +6,11 @@ namespace Aluminum
 {
     public static class HtmlHelperExtensions
     {
-        private static readonly string _version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private static readonly string _version = DateTime.Now.ToString();//Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public static string Version(this HtmlHelper htmlHelper)
         {
-            return DateTime.Now.ToString();
+            return _version;
         }
     }
 }

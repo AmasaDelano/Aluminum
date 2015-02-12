@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="RoomOfRequirement">
   <DataContextMoniker Name="/RoomOfRequirementDataContext" />
   <nestedChildShapes>
-    <classShape Id="8b366d74-2045-4ad5-985a-de48dc907b29" absoluteBounds="4.75, 1.625, 2, 3.1072981308897329">
-      <DataClassMoniker Name="/RoomOfRequirementDataContext/Costume" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff8b66b4-04bf-4939-8adf-3fdbcc91bed5" absoluteBounds="4.765, 2.085, 1.9700000000000002, 2.5472981308897333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4aaf3a11-49af-4108-ac85-c2b0c55307b0" absoluteBounds="2, 1.625, 2, 1.4386783690253895">
+    <classShape Id="9cc98cc3-1db8-43f6-b5b0-760f9ce3f51a" absoluteBounds="0.5, 0.875, 2, 1.3862939453125">
       <DataClassMoniker Name="/RoomOfRequirementDataContext/CostumeQuestion" />
       <nestedChildShapes>
-        <elementListCompartment Id="4d01227d-3b21-4234-a9b9-dfd1fac11dcf" absoluteBounds="2.0149999999999997, 2.085, 1.9700000000000002, 0.87867836902538943" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6156285a-cc3f-4249-ae9e-8c30bc6cc10b" absoluteBounds="0.51500000000000012, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="598cadc3-6984-4f10-bd08-fdeec031ca53" absoluteBounds="2.75, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/RoomOfRequirementDataContext/Costume" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bb4124ae-4991-4b04-bfd6-c8ada61e9a99" absoluteBounds="2.7649999999999997, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
