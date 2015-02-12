@@ -43,7 +43,7 @@
                         <label class="form-control text-right" for="@property.Key">@property.Key</label>
                         <label class="input-group-addon" for="@property.Key">
                             <input type="checkbox" id="@property.Key" name="Properties[@property.Key]"
-                                   value="true" @(property.Value ? "checked='checked'" : "") />
+                                   value="true" @(Convert.ToBoolean(property.Value) ? "checked='checked'" : "") />
                         </label>
                     </div>
                 }
