@@ -201,6 +201,7 @@
       <DependentUpon>RoomOfRequirement.edmx</DependentUpon>
       <LastGenOutput>RoomOfRequirement.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Aluminum.pubxml" />
     <None Include="Properties\PublishProfiles\SmarterAsp.NET.pubxml" />
     <None Include="Scripts\jquery\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery\jquery.cookie.js" />
