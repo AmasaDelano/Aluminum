@@ -62,22 +62,12 @@
 
                 return indexOfHighestItem;
             },
-            getNextQuestionIndex = function () {
-                var questionRatings = [],
-                    possibleCostumes,
-                    bestQuestionIndex,
-                    questionIndex,
+            getQuestionRatings = function (possibleCostumes) {
+                var questionIndex,
                     question,
                     costumeIndex,
                     costume,
-                    oneRatingIsGood;
-
-                // If there is only one costume that fits the criteria, we are done.
-                possibleCostumes = getPossibleCostumes();
-
-                if (possibleCostumes.length === 1) {
-                    return -1;
-                }
+                    questionRatings = [];
 
                 for (questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
                     questionRatings[questionIndex] = 0;
@@ -93,22 +83,43 @@
                             }
                         }
                     }
-                        }
+                }
 
-                oneRatingIsGood = false;
                 for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
                     questionRatings[questionIndex] =
                         possibleCostumes.length -
                         Math.abs(possibleCostumes.length - questionRatings[questionIndex] * 2);
+                }
 
-                    if (questionRatings[questionIndex] > 0) {
+                return questionRatings;
+            },
+            getNextQuestionIndex = function () {
+                var questionRatings = [],
+                    possibleCostumes,
+                    bestQuestionIndex,
+                    ratingIndex,
+                    oneRatingIsGood;
+
+                // If there is only one costume that fits the criteria, we are done.
+                possibleCostumes = getPossibleCostumes();
+
+                if (possibleCostumes.length === 1) {
+                    return -1;
+                }
+
+                questionRatings = getQuestionRatings(possibleCostumes);
+
+                oneRatingIsGood = false;
+                for (ratingIndex = 0; ratingIndex < questionRatings.length; ratingIndex += 1) {
+                    if (questionRatings[ratingIndex] > 0) {
                         oneRatingIsGood = true;
+                        break;
                     }
                 }
 
                 if (!oneRatingIsGood) {
                     return -1;
-                    }
+                }
 
                 bestQuestionIndex = getIndexOfHighestItem(questionRatings);
 

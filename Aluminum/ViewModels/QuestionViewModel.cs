@@ -1,10 +1,17 @@
-﻿namespace Aluminum.ViewModels
+﻿using System.Collections.Generic;
+
+namespace Aluminum.ViewModels
 {
     public class QuestionViewModel
     {
+        public QuestionViewModel()
+        {
+            Options = new List<OptionViewModel>();
+        }
+
         public string Question { get; set; }
         public string Answered { get; set; }
         public string DataField { get; set; }
-        public short Answer { get; set; }
+        public List<OptionViewModel> Options { get; set; }
     }
 }

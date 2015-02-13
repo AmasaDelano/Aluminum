@@ -31,8 +31,24 @@
                 <h3>
                     {{ questions.getCurrentQuestion().question }}
                 </h3>
-                <input type="button" class="btn btn-lg btn-success" value="Yes!" ng-click="questions.answerCurrentQuestion(1)" />
-                <input type="button" class="btn btn-lg btn-danger" value="No, thanks" ng-click="questions.answerCurrentQuestion(0)" />
+                <div ng-show="questions.getCurrentQuestion().options.length === 0">
+                    <input type="button"
+                           class="btn btn-lg btn-success"
+                           value="Yes!"
+                           ng-click="questions.answerCurrentQuestion(true)" />
+
+                    <input type="button"
+                           class="btn btn-lg btn-danger"
+                           value="No, thanks"
+                           ng-click="questions.answerCurrentQuestion(false)" />
+                </div>
+                <div ng-show="questions.getCurrentQuestion().options.length > 0">
+                    <input ng-repeat="option in questions.getCurrentQuestion().question.options"
+                           type="button"
+                           class="btn btn-lg btn-info"
+                           value="{{ option.name }}"
+                           ng-click="questions.answerCurrentQuestion(option.value)" />
+                </div>
             </div>
             <img src="~/Content/Images/loading.gif" alt="Loading..." ng-show="questions.isLoading()" />
             <div ng-show="!questions.hasQuestionsLeft() && !questions.isLoading()">

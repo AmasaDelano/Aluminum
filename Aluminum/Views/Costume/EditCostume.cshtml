@@ -37,16 +37,13 @@
             </fieldset>
             <br/>
             <fieldset style="max-width: 200px;">
-                @foreach (var property in Model.Properties.OrderBy(e => e.Key))
-                {
-                    <div class="input-group">
+                    @*<div class="input-group">
                         <label class="form-control text-right" for="@property.Key">@property.Key</label>
                         <label class="input-group-addon" for="@property.Key">
                             <input type="checkbox" id="@property.Key" name="Properties[@property.Key]"
                                    value="true" @(Convert.ToBoolean(property.Value) ? "checked='checked'" : "") />
                         </label>
-                    </div>
-                }
+                    </div>*@
             </fieldset>
         </form>
     </div>

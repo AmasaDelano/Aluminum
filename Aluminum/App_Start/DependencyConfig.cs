@@ -1,4 +1,4 @@
-﻿using System.Data.Linq;
+﻿using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using Aluminum.Models;
@@ -14,7 +14,7 @@ namespace Aluminum
         {
             var container = new Container();
 
-            container.RegisterPerWebRequest<DataContext>(() => new RoomOfRequirementDataContext());
+            container.RegisterPerWebRequest<DbContext>(() => new RoomOfRequirement());
 
             container.Verify();
 

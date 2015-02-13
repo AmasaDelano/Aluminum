@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Aluminum.Models;
+﻿using Aluminum.Models;
 using Aluminum.ViewModels;
 using AutoMapper;
 
@@ -12,41 +9,26 @@ namespace Aluminum
         public static void RegisterMaps()
         {
             Mapper.CreateMap<CostumeViewModel, Costume>()
-                .AfterMap(
-                    (v, e) =>
-                    {
-                        Type costumeType = typeof(Costume);
-
-                        foreach (var propertyName in v.Properties)
-                        {
-                            var property = costumeType.GetProperty(propertyName.Key);
-                            property.SetValue(e, propertyName.Value);
-                        }
-
-                        e.CostumeID = v.Id;
-                        e.GenderTypeID = (byte) GenderType.Male;
-                    });
+                .ForMember(e => e.CostumeID, e => e.MapFrom(t => t.Id));
 
             Mapper.CreateMap<Costume, CostumeViewModel>()
-                .AfterMap(
-                    (e, v) =>
-                    {
-                        var properties = typeof(Costume).GetProperties()
-                            .Where(b =>
-                                b.PropertyType == typeof(bool) ||
-                                b.PropertyType == typeof(byte));
-
-                        v.Properties = new Dictionary<string, short>();
-
-                        foreach (var property in properties)
-                        {
-                            v.Properties.Add(property.Name, Convert.ToInt16(property.GetValue(e)));
-                        }
-
-                        v.Id = e.CostumeID;
-                    });
+                .ForMember(e => e.Id, e => e.MapFrom(t => t.CostumeID))
+                .ForMember(
+                    e => e.Properties,
+                    e => e.ResolveUsing<PropertiesResolver>()
+                        .FromMember(t => t));
 
             Mapper.CreateMap<CostumeQuestion, QuestionViewModel>();
+
+            Mapper.CreateMap<Costume, CostumePropertiesViewModel>();
+        }
+    }
+
+    public class PropertiesResolver : ValueResolver<Costume, CostumePropertiesViewModel>
+    {
+        protected override CostumePropertiesViewModel ResolveCore(Costume source)
+        {
+            return Mapper.Map<CostumePropertiesViewModel>(source);
         }
     }
 }

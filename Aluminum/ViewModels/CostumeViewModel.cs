@@ -13,6 +13,6 @@ namespace Aluminum.ViewModels
         public short Id { get; set; }
         public string Name { get; set; }
         public string ImageFileName { get; set; }
-        public Dictionary<string, short> Properties { get; set; }
+        public CostumePropertiesViewModel Properties { get; set; }
     }
 }

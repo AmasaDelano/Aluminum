@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data.Linq;
+using System.Data.Entity;
 using System.Linq;
 using Aluminum.ViewModels;
 using AutoMapper;
@@ -8,21 +8,21 @@ namespace Aluminum.Models
 {
     public class CostumeService
     {
-        private readonly DataContext _dataContext;
+        private readonly DbContext _dbContext;
 
-        private Table<Costume> Costumes
+        private DbSet<Costume> Costumes
         {
-            get { return _dataContext.GetTable<Costume>(); }
+            get { return _dbContext.Set<Costume>(); }
         }
 
-        private Table<CostumeQuestion> Questions
+        private DbSet<CostumeQuestion> Questions
         {
-            get { return _dataContext.GetTable<CostumeQuestion>(); }
+            get { return _dbContext.Set<CostumeQuestion>(); }
         }
 
-        public CostumeService(DataContext dataContext)
+        public CostumeService(DbContext dbContext)
         {
-            _dataContext = dataContext;
+            _dbContext = dbContext;
         }
 
         public List<QuestionViewModel> GetQuestions()
@@ -55,7 +55,7 @@ namespace Aluminum.Models
         public void DeleteCostume(short costumeId)
         {
             var costume = Costumes.Single(e => e.CostumeID == costumeId);
-            Costumes.DeleteOnSubmit(costume);
+            Costumes.Remove(costume);
             Save();
         }
 
@@ -64,7 +64,7 @@ namespace Aluminum.Models
             if (costume.Id == 0)
             {
                 var costumeEntity = Mapper.Map<Costume>(costume);
-                Costumes.InsertOnSubmit(costumeEntity);
+                Costumes.Add(costumeEntity);
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Aluminum.Models
 
         private void Save()
         {
-            _dataContext.SubmitChanges();            
+            _dbContext.SaveChanges();
         }
     }
 }
