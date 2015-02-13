@@ -207,7 +207,7 @@ namespace Aluminum.Models
 		
 		private string _ImageFileName;
 		
-		private byte _GenderTypeID;
+		private System.Nullable<byte> _GenderTypeID;
 		
 		private bool _IsFictional;
 		
@@ -229,7 +229,7 @@ namespace Aluminum.Models
     partial void OnNameChanged();
     partial void OnImageFileNameChanging(string value);
     partial void OnImageFileNameChanged();
-    partial void OnGenderTypeIDChanging(byte value);
+    partial void OnGenderTypeIDChanging(System.Nullable<byte> value);
     partial void OnGenderTypeIDChanged();
     partial void OnIsFictionalChanging(bool value);
     partial void OnIsFictionalChanged();
@@ -308,8 +308,8 @@ namespace Aluminum.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GenderTypeID", DbType="TinyInt NOT NULL")]
-		public byte GenderTypeID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GenderTypeID", DbType="TinyInt")]
+		public System.Nullable<byte> GenderTypeID
 		{
 			get
 			{

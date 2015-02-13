@@ -93,7 +93,7 @@
                             }
                         }
                     }
-                }
+                        }
 
                 oneRatingIsGood = false;
                 for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
@@ -108,7 +108,7 @@
 
                 if (!oneRatingIsGood) {
                     return -1;
-                }
+                    }
 
                 bestQuestionIndex = getIndexOfHighestItem(questionRatings);
 

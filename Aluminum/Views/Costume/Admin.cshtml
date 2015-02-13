@@ -34,7 +34,8 @@
                             </form>
                         </td>
                         <td>
-                            <form method="POST" action="@Url.Action("DeleteCostume", new { costumeId = costume.Id })">
+                            <form method="POST" action="@Url.Action("DeleteCostume")">
+                                <input type="hidden" value="@costume.Id" name="costumeId" />
                                 <button type="submit" class="btn btn-danger"
                                         onclick="return confirm('Are you sure you want to delete this costume? This cannot be undone.')">
                                     <span class="glyphicon glyphicon-remove"></span>
