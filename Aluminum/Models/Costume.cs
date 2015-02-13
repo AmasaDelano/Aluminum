@@ -17,7 +17,7 @@ namespace Aluminum.Models
         public short CostumeID { get; set; }
         public string Name { get; set; }
         public string ImageFileName { get; set; }
-        public Nullable<byte> GenderTypeID { get; set; }
+        public Nullable<GenderType> GenderTypeID { get; set; }
         public bool IsFictional { get; set; }
         public bool IsHuman { get; set; }
         public bool HasSuperPowers { get; set; }

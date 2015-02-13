@@ -30,11 +30,11 @@ namespace Aluminum.Controllers
         [HttpPost]
         public ActionResult AddCostume()
         {
-            return RedirectToAction("EditCostume", new { costumeId = 0 });
+            return RedirectToAction("EditCostume");
         }
 
         [HttpGet]
-        public ActionResult EditCostume(short costumeId)
+        public ActionResult EditCostume(short costumeId = 0)
         {
             var costume = _costumeService.GetCostume(costumeId);
 
@@ -50,7 +50,7 @@ namespace Aluminum.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveCostume(CostumeViewModel costume)
+        public ActionResult EditCostume(CostumeViewModel costume)
         {
             _costumeService.SaveCostume(costume);
 

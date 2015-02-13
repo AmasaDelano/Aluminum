@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using Aluminum.ViewModels;
 using AutoMapper;
@@ -8,26 +7,16 @@ namespace Aluminum.Models
 {
     public class CostumeService
     {
-        private readonly DbContext _dbContext;
+        private readonly RoomOfRequirement _context;
 
-        private DbSet<Costume> Costumes
+        public CostumeService(RoomOfRequirement context)
         {
-            get { return _dbContext.Set<Costume>(); }
-        }
-
-        private DbSet<CostumeQuestion> Questions
-        {
-            get { return _dbContext.Set<CostumeQuestion>(); }
-        }
-
-        public CostumeService(DbContext dbContext)
-        {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public List<QuestionViewModel> GetQuestions()
         {
-            var questionEntities = Questions
+            var questionEntities = _context.CostumeQuestions
                 .OrderBy(e => e.DataField)
                 .ToList();
 
@@ -44,8 +33,7 @@ namespace Aluminum.Models
 
         public List<CostumeViewModel> GetCostumes()
         {
-            var costumeEntities = Costumes
-                .ToList();
+            var costumeEntities = _context.Costumes.ToList();
 
             var costumes = Mapper.Map<List<CostumeViewModel>>(costumeEntities);
 
@@ -54,8 +42,8 @@ namespace Aluminum.Models
 
         public void DeleteCostume(short costumeId)
         {
-            var costume = Costumes.Single(e => e.CostumeID == costumeId);
-            Costumes.Remove(costume);
+            var costume = _context.Costumes.Single(e => e.CostumeID == costumeId);
+            _context.Costumes.Remove(costume);
             Save();
         }
 
@@ -64,11 +52,11 @@ namespace Aluminum.Models
             if (costume.Id == 0)
             {
                 var costumeEntity = Mapper.Map<Costume>(costume);
-                Costumes.Add(costumeEntity);
+                _context.Costumes.Add(costumeEntity);
             }
             else
             {
-                var costumeEntity = Costumes.Single(e => e.CostumeID == costume.Id);
+                var costumeEntity = _context.Costumes.Single(e => e.CostumeID == costume.Id);
                 Mapper.Map(costume, costumeEntity);
             }
             Save();
@@ -76,9 +64,8 @@ namespace Aluminum.Models
 
         public CostumeViewModel GetCostume(short costumeId)
         {
-            var costumeEntity = Costumes
-                .FirstOrDefault(e => e.CostumeID == costumeId) ?? new Costume();
-
+            var costumeEntity = _context.Costumes.FirstOrDefault(e => e.CostumeID == costumeId) ?? new Costume();
+            
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
 
             return costume;
@@ -86,7 +73,7 @@ namespace Aluminum.Models
 
         private void Save()
         {
-            _dbContext.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

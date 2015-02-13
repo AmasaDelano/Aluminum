@@ -8,27 +8,17 @@ namespace Aluminum
     {
         public static void RegisterMaps()
         {
-            Mapper.CreateMap<CostumeViewModel, Costume>()
-                .ForMember(e => e.CostumeID, e => e.MapFrom(t => t.Id));
+            // Entity to view model maps
 
             Mapper.CreateMap<Costume, CostumeViewModel>()
-                .ForMember(e => e.Id, e => e.MapFrom(t => t.CostumeID))
-                .ForMember(
-                    e => e.Properties,
-                    e => e.ResolveUsing<PropertiesResolver>()
-                        .FromMember(t => t));
+                .ForMember(e => e.Id, e => e.MapFrom(t => t.CostumeID));
 
             Mapper.CreateMap<CostumeQuestion, QuestionViewModel>();
 
-            Mapper.CreateMap<Costume, CostumePropertiesViewModel>();
-        }
-    }
+            // View model to entity maps
 
-    public class PropertiesResolver : ValueResolver<Costume, CostumePropertiesViewModel>
-    {
-        protected override CostumePropertiesViewModel ResolveCore(Costume source)
-        {
-            return Mapper.Map<CostumePropertiesViewModel>(source);
+            Mapper.CreateMap<CostumeViewModel, Costume>()
+                .ForMember(e => e.CostumeID, e => e.MapFrom(t => t.Id));
         }
     }
 }

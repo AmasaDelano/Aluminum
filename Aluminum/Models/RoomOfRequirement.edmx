@@ -42,7 +42,7 @@
           <Property Name="CostumeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="GenderTypeID" Type="Byte" />
+          <Property Name="GenderTypeID" Type="DB_9BB309_GiantChocoboModel.GenderType" />
           <Property Name="IsFictional" Type="Boolean" Nullable="false" />
           <Property Name="IsHuman" Type="Boolean" Nullable="false" />
           <Property Name="HasSuperPowers" Type="Boolean" Nullable="false" />
@@ -61,6 +61,10 @@
           <EntitySet Name="Costumes" EntityType="Self.Costume" />
           <EntitySet Name="CostumeQuestions" EntityType="Self.CostumeQuestion" />
         </EntityContainer>
+        <EnumType Name="GenderType" UnderlyingType="Byte" a:ExternalTypeName="GenderType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <Member Name="Male" Value="1" />
+          <Member Name="Female" Value="2" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

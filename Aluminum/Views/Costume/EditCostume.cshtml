@@ -10,7 +10,7 @@
     <div class="col-md-6">
         <h2>@(Model.Id == 0 ? "New" : Model.Name) Costume</h2>
         
-        <form method="POST" action="@Url.Action("SaveCostume")">
+        <form method="POST">
             <input type="hidden" value="@Model.Id" name="Id" />
             
             <button class="btn btn-default" onclick="window.location = '@Url.Action("Admin")'; return false;">
@@ -37,13 +37,15 @@
             </fieldset>
             <br/>
             <fieldset style="max-width: 200px;">
-                    @*<div class="input-group">
-                        <label class="form-control text-right" for="@property.Key">@property.Key</label>
-                        <label class="input-group-addon" for="@property.Key">
-                            <input type="checkbox" id="@property.Key" name="Properties[@property.Key]"
-                                   value="true" @(Convert.ToBoolean(property.Value) ? "checked='checked'" : "") />
-                        </label>
-                    </div>*@
+                @Html.EditorFor(e => e.GenderTypeId)
+                
+                <br/>
+
+                @Html.EditorFor(e => e.HasFacialHair)
+                @Html.EditorFor(e => e.HasMagic)
+                @Html.EditorFor(e => e.HasSuperPowers)
+                @Html.EditorFor(e => e.IsFictional)
+                @Html.EditorFor(e => e.IsHuman)
             </fieldset>
         </form>
     </div>

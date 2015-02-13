@@ -36,7 +36,7 @@
                     possible = true;
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
-                        if (costume.properties[answer.dataField] !== answer.answer) {
+                        if (costume[answer.dataField] !== answer.answer) {
                             possible = false;
                             break;
                         }
@@ -78,7 +78,7 @@
                     if (answered.indexOf(question) === -1) {
                         for (costumeIndex = 0; costumeIndex < possibleCostumes.length; costumeIndex += 1) {
                             costume = possibleCostumes[costumeIndex];
-                            if (!!costume.properties[question.dataField]) {
+                            if (!!costume[question.dataField]) {
                                 questionRatings[questionIndex] += 1;
                             }
                         }
