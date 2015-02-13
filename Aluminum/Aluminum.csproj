@@ -287,7 +287,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\Costumes\" />
+    <Folder Include="App_Data\CostumeImages\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -55,7 +55,7 @@
                 <h1>
                     {{ questions.getBestCostume().name }}
                 </h1>
-                <img ng-src="~/Content/Images/Costumes/{{ questions.getBestCostume().imageFileName }}"
+                <img ng-src="~/App_Data/CostumesImages/{{ questions.getBestCostume().imageFileName }}"
                      alt="{{ questions.getBestCostume().name }}"
                      ng-show="questions.isLoading()" />
             </div>

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using Aluminum.Models;
 using Aluminum.ViewModels;
 
@@ -50,8 +51,15 @@ namespace Aluminum.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditCostume(CostumeViewModel costume)
+        public ActionResult EditCostume(CostumeViewModel costume, HttpPostedFileBase imageFile)
         {
+            //if (imageFile != null && imageFile.ContentLength > 0)
+            //{
+            //    _costumeService.UploadFile(imageFile, costume.Name, Server);
+
+            //    costume.ImageFileName = imageFile.FileName;
+            //}
+
             _costumeService.SaveCostume(costume);
 
             TempData["SavedMessage"] = string.Format("{0} costume saved!", costume.Name);

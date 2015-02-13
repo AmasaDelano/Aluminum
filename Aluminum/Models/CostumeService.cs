@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Web;
 using Aluminum.Extensions;
 using Aluminum.ViewModels;
 using AutoMapper;
@@ -89,6 +91,13 @@ namespace Aluminum.Models
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
 
             return costume;
+        }
+
+        public void UploadFile(HttpPostedFileBase imageFile, string costumeName, HttpServerUtilityBase server)
+        {
+            string fileName = costumeName + Path.GetExtension(imageFile.FileName);
+            string path = Path.Combine(server.MapPath("~/App_Data/CostumeImages"), fileName);
+            imageFile.SaveAs(path);
         }
 
         private void Save()
