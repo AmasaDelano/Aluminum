@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Aluminum.Extensions;
 using Aluminum.ViewModels;
 using AutoMapper;
 
@@ -25,6 +28,23 @@ namespace Aluminum.Models
             questions.ForEach(
                 e =>
                 {
+                    // If it ends with "Id", it's a type column
+                    // and therefore an enum.
+                    if (e.DataField.EndsWith("Id"))
+                    {
+                        string enumName = e.DataField.Remove(e.DataField.Length - "Id".Length);
+                        var enumType = Assembly.GetExecutingAssembly().GetType("Aluminum.Models." + enumName);
+                        var enumMembers = EnumExtensions.GetEnumMembers(enumType);
+                        e.Options = enumMembers.Select(
+                            m =>
+                                new OptionViewModel
+                                {
+                                    Name = m.ToString(),
+                                    Value = Convert.ToByte(m)
+                                })
+                            .ToList();
+                    }
+
                     e.DataField = e.DataField.Substring(0, 1).ToLower() + e.DataField.Substring(1);
                 });
 
@@ -65,7 +85,7 @@ namespace Aluminum.Models
         public CostumeViewModel GetCostume(short costumeId)
         {
             var costumeEntity = _context.Costumes.FirstOrDefault(e => e.CostumeID == costumeId) ?? new Costume();
-            
+
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
 
             return costume;

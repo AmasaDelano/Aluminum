@@ -12,15 +12,24 @@
             getCurrentQuestion = function () {
                 return questions[currentQuestionIndex];
             },
+            toInt = function (value) {
+                if (typeof value === 'boolean') {
+                    return value ? 1 : 0;
+                }
+                return value;
+            },
             revisitQuestion = function (question) {
                 var questionIndex = questions.indexOf(question),
                     answeredIndex = answered.indexOf(question);
                 currentQuestionIndex = questionIndex;
                 answered.length = answeredIndex;
             },
-            answerQuestion = function (questionIndex, answer) {
+            answerQuestion = function (questionIndex, answer, text) {
                 var question = questions[questionIndex];
-                question.answer = answer;
+                question.answerValue = answer;
+                if (text) {
+                    question.answered = text;
+                }
                 answered.push(question);
             },
             getPossibleCostumes = function () {
@@ -36,7 +45,7 @@
                     possible = true;
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
-                        if (costume[answer.dataField] !== answer.answer) {
+                        if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue)) {
                             possible = false;
                             break;
                         }
@@ -67,28 +76,47 @@
                     question,
                     costumeIndex,
                     costume,
+                    ratingIndex,
+                    rating,
+                    answerValue,
                     questionRatings = [];
 
+                // Initialize the question ratings array with an array for each question.
                 for (questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
-                    questionRatings[questionIndex] = 0;
+                    questionRatings[questionIndex] = [];
                 }
 
+                // Increment the question-answer rating for each
                 for (questionIndex = 0; questionIndex < questions.length; questionIndex += 1) {
                     question = questions[questionIndex];
                     if (answered.indexOf(question) === -1) {
                         for (costumeIndex = 0; costumeIndex < possibleCostumes.length; costumeIndex += 1) {
                             costume = possibleCostumes[costumeIndex];
-                            if (!!costume[question.dataField]) {
-                                questionRatings[questionIndex] += 1;
+                            answerValue = toInt(costume[question.dataField]);
+                            rating = questionRatings[questionIndex];
+                            if (rating[answerValue] === undefined) {
+                                rating[answerValue] = 0;
                             }
+                            rating[answerValue] += 1;
                         }
                     }
                 }
 
+                // Transform the ratings from incremented numbers to actual ratings
+                // (Closer to the middle is better.)
+                for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
+                    rating = questionRatings[questionIndex];
+                    for (ratingIndex = 0; ratingIndex < rating.length; ratingIndex += 1) {
+                        rating[ratingIndex] =
+                            possibleCostumes.length -
+                            Math.abs(possibleCostumes.length - rating[ratingIndex] * 2);
+                    }
+                }
+
+                // Take the highest value for each question, and make that the rating.
                 for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
                     questionRatings[questionIndex] =
-                        possibleCostumes.length -
-                        Math.abs(possibleCostumes.length - questionRatings[questionIndex] * 2);
+                        questionRatings[questionIndex][getIndexOfHighestItem(questionRatings[questionIndex])];
                 }
 
                 return questionRatings;
@@ -129,8 +157,8 @@
 
                 return bestQuestionIndex;
             },
-            answerCurrentQuestion = function (answer) {
-                answerQuestion(currentQuestionIndex, answer);
+            answerCurrentQuestion = function (answer, text) {
+                answerQuestion(currentQuestionIndex, toInt(answer), text);
                 currentQuestionIndex = getNextQuestionIndex();
             },
             hasQuestionsLeft = function () {

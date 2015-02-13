@@ -227,6 +227,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\CostumeEnumAttribute.cs" />
     <Compile Include="Extensions\CostumeCheckBoxAttribute.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Controllers\TechSupportController.cs" />
     <Compile Include="Global.asax.cs">
