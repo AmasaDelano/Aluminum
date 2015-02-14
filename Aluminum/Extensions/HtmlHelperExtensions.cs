@@ -18,5 +18,10 @@ namespace Aluminum.Extensions
         {
             return EnumExtensions.GetEnumMembers(propertyEnumType);
         }
+
+        public static string GetCostumesImagesPath(this HtmlHelper htmlHelper)
+        {
+            return ConfigurationExtensions.GetCostumeImagesPath();
+        }
     }
 }

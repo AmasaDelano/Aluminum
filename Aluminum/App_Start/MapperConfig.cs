@@ -11,6 +11,7 @@ namespace Aluminum
             // Entity to view model maps
 
             Mapper.CreateMap<Costume, CostumeViewModel>()
+                .ForMember(e => e.ImageFileName, e => e.Condition(t => !t.IsSourceValueNull))
                 .ForMember(e => e.Id, e => e.MapFrom(t => t.CostumeID));
 
             Mapper.CreateMap<CostumeQuestion, QuestionViewModel>();
@@ -18,6 +19,7 @@ namespace Aluminum
             // View model to entity maps
 
             Mapper.CreateMap<CostumeViewModel, Costume>()
+                .ForMember(e => e.ImageFileName, e => e.Condition(t => !t.IsSourceValueNull))
                 .ForMember(e => e.CostumeID, e => e.MapFrom(t => t.Id));
         }
     }

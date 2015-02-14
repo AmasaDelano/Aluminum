@@ -53,18 +53,18 @@ namespace Aluminum.Controllers
         [HttpPost]
         public ActionResult EditCostume(CostumeViewModel costume, HttpPostedFileBase imageFile)
         {
-            //if (imageFile != null && imageFile.ContentLength > 0)
-            //{
-            //    _costumeService.UploadFile(imageFile, costume.Name, Server);
+            if (costume != null && ModelState.IsValid)
+            {
+                _costumeService.SaveCostume(costume, imageFile, Server);
 
-            //    costume.ImageFileName = imageFile.FileName;
-            //}
+                TempData["SavedMessage"] = string.Format("{0} costume saved!", costume.Name);
 
-            _costumeService.SaveCostume(costume);
+                return RedirectToAction("Admin");
+            }
 
-            TempData["SavedMessage"] = string.Format("{0} costume saved!", costume.Name);
+            ModelState.AddModelError("name", "Each costume must have a name!");
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("EditCostume");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Aluminum.Extensions;
 using Aluminum.Models;
 
@@ -6,14 +7,9 @@ namespace Aluminum.ViewModels
 {
     public class CostumeViewModel
     {
-        public CostumeViewModel()
-        {
-            Name = string.Empty;
-            ImageFileName = string.Empty;
-        }
-
         public short Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string ImageFileName { get; set; }
@@ -44,6 +40,6 @@ namespace Aluminum.ViewModels
         [DisplayName("Is Human")]
         public bool IsHuman { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

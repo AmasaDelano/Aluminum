@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Web;
 using Aluminum.Extensions;
 using Aluminum.ViewModels;
@@ -69,19 +70,16 @@ namespace Aluminum.Models
             Save();
         }
 
-        public void SaveCostume(CostumeViewModel costume)
+        public void SaveCostume(CostumeViewModel costume, HttpPostedFileBase imageFile, HttpServerUtilityBase server)
         {
-            if (costume.Id == 0)
+            if (imageFile != null && imageFile.ContentLength > 0)
             {
-                var costumeEntity = Mapper.Map<Costume>(costume);
-                _context.Costumes.Add(costumeEntity);
+                string fileName = UploadFile(imageFile, costume.Name, server);
+
+                costume.ImageFileName = fileName;
             }
-            else
-            {
-                var costumeEntity = _context.Costumes.Single(e => e.CostumeID == costume.Id);
-                Mapper.Map(costume, costumeEntity);
-            }
-            Save();
+
+            SaveCostume(costume);
         }
 
         public CostumeViewModel GetCostume(short costumeId)
@@ -93,11 +91,43 @@ namespace Aluminum.Models
             return costume;
         }
 
-        public void UploadFile(HttpPostedFileBase imageFile, string costumeName, HttpServerUtilityBase server)
+        private string UploadFile(HttpPostedFileBase imageFile, string costumeName, HttpServerUtilityBase server)
         {
-            string fileName = costumeName + Path.GetExtension(imageFile.FileName);
-            string path = Path.Combine(server.MapPath("~/App_Data/CostumeImages"), fileName);
+            string cleanedCostumeName = Regex.Replace(costumeName, @"[^\w]+", "").ToLower();
+            string fileName = cleanedCostumeName + Path.GetExtension(imageFile.FileName);
+            string folderPath = server.MapPath("~" + ConfigurationExtensions.GetCostumeImagesPath());
+
+            var directory = new DirectoryInfo(folderPath);
+            if (!directory.Exists)
+            {
+                directory.Create();
+            }
+
+            string path = Path.Combine(folderPath, fileName);
             imageFile.SaveAs(path);
+
+            return fileName;
+        }
+
+        private void SaveCostume(CostumeViewModel costume)
+        {
+            if (string.IsNullOrEmpty(costume.Name))
+            {
+                throw new ArgumentException("Costume name cannot be empty!", "costume");
+            }
+
+            if (costume.Id == 0)
+            {
+                costume.ImageFileName = costume.ImageFileName ?? string.Empty;
+                var costumeEntity = Mapper.Map<Costume>(costume);
+                _context.Costumes.Add(costumeEntity);
+            }
+            else
+            {
+                var costumeEntity = _context.Costumes.Single(e => e.CostumeID == costume.Id);
+                Mapper.Map(costume, costumeEntity);
+            }
+            Save();
         }
 
         private void Save()

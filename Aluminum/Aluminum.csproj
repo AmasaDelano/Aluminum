@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <MvcBuildViews>true</MvcBuildViews>
+    <MvcBuildViews>false</MvcBuildViews>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,10 +57,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -226,6 +228,7 @@
     <Compile Include="Controllers\CostumeApiController.cs" />
     <Compile Include="Controllers\CostumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\ConfigurationExtensions.cs" />
     <Compile Include="Extensions\CostumeEnumAttribute.cs" />
     <Compile Include="Extensions\CostumeCheckBoxAttribute.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -279,6 +282,7 @@
     <Content Include="Views\Costume\_AdminLayout.cshtml" />
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeCheckbox.cshtml" />
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeEnum.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -286,9 +290,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\CostumeImages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
