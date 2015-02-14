@@ -23,7 +23,7 @@
                     ng-click="questions.revisitQuestion(answer)"
                     ng-hide="questions.isLoading()"
                     class="notSelectable">
-                    {{ answer.answered }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.answerValue, 'glyphicon-remove': !answer.answerValue }"></span>
+                    {{ answer.answeredText }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.answerValue, 'glyphicon-remove': !answer.answerValue }"></span>
                 </h5>
             </header>
 

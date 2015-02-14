@@ -186,23 +186,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <EntityDeploy Include="Models\RoomOfRequirement.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RoomOfRequirement.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\RoomOfRequirement.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RoomOfRequirement.edmx</DependentUpon>
-      <LastGenOutput>RoomOfRequirement.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\RoomOfRequirement.edmx.diagram">
-      <DependentUpon>RoomOfRequirement.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\RoomOfRequirement.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RoomOfRequirement.edmx</DependentUpon>
-      <LastGenOutput>RoomOfRequirement.cs</LastGenOutput>
-    </Content>
     <None Include="Properties\PublishProfiles\Aluminum.pubxml" />
     <None Include="Properties\PublishProfiles\SmarterAsp.NET.pubxml" />
     <None Include="Scripts\jquery\jquery-2.1.3.intellisense.js" />
@@ -237,29 +220,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Costume.cs">
-      <DependentUpon>RoomOfRequirement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CostumeQuestion.cs">
-      <DependentUpon>RoomOfRequirement.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\AgeRangeType.cs" />
+    <Compile Include="Models\Costume.cs" />
+    <Compile Include="Models\CostumeQuestion.cs" />
     <Compile Include="Models\CostumeService.cs" />
     <Compile Include="Models\GenderType.cs" />
-    <Compile Include="Models\RoomOfRequirement.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RoomOfRequirement.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RoomOfRequirement.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RoomOfRequirement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RoomOfRequirement.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RoomOfRequirement.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\HairColorType.cs" />
+    <Compile Include="Models\HairLengthType.cs" />
+    <Compile Include="Models\RoomOfRequirement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CostumeViewModel.cs" />
     <Compile Include="ViewModels\OptionViewModel.cs" />

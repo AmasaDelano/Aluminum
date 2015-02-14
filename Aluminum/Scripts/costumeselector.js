@@ -28,7 +28,9 @@
                 var question = questions[questionIndex];
                 question.answerValue = answer;
                 if (text) {
-                    question.answered = text;
+                    question.answeredText = text + question.answered;
+                } else {
+                    question.answeredText = question.answered;
                 }
                 answered.push(question);
             },

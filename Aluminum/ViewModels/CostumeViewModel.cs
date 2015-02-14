@@ -20,6 +20,18 @@ namespace Aluminum.ViewModels
         [DisplayName("Gender")]
         public GenderType? GenderTypeId { get; set; }
 
+        [CostumeEnum]
+        [DisplayName("Age Range")]
+        public AgeRangeType? AgeRangeTypeId { get; set; }
+
+        [CostumeEnum]
+        [DisplayName("Hair Length")]
+        public HairLengthType? HairLengthTypeId { get; set; }
+
+        [CostumeEnum]
+        [DisplayName("Hair Color")]
+        public HairColorType? HairColorTypeId { get; set; }
+
         [CostumeCheckBox]
         [DisplayName("Has Facial Hair")]
         public bool HasFacialHair { get; set; }

@@ -31,8 +31,7 @@ namespace Aluminum.Models
             questions.ForEach(
                 e =>
                 {
-                    // If it ends with "Id", it's a type column
-                    // and therefore an enum.
+                    // If it ends with "Id", it's a type column and therefore an enum.
                     if (e.DataField.EndsWith("Id"))
                     {
                         string enumName = e.DataField.Remove(e.DataField.Length - "Id".Length);
@@ -65,7 +64,7 @@ namespace Aluminum.Models
 
         public void DeleteCostume(short costumeId)
         {
-            var costume = _context.Costumes.Single(e => e.CostumeID == costumeId);
+            var costume = _context.Costumes.Single(e => e.CostumeId == costumeId);
             _context.Costumes.Remove(costume);
             Save();
         }
@@ -84,7 +83,7 @@ namespace Aluminum.Models
 
         public CostumeViewModel GetCostume(short costumeId)
         {
-            var costumeEntity = _context.Costumes.FirstOrDefault(e => e.CostumeID == costumeId) ?? new Costume();
+            var costumeEntity = _context.Costumes.FirstOrDefault(e => e.CostumeId == costumeId) ?? new Costume();
 
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
 
@@ -124,7 +123,7 @@ namespace Aluminum.Models
             }
             else
             {
-                var costumeEntity = _context.Costumes.Single(e => e.CostumeID == costume.Id);
+                var costumeEntity = _context.Costumes.Single(e => e.CostumeId == costume.Id);
                 Mapper.Map(costume, costumeEntity);
             }
             Save();
