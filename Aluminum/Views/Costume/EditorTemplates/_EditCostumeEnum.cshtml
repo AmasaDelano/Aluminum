@@ -8,7 +8,7 @@
         <select name="@ViewData.ModelMetadata.PropertyName" >
             @if (ViewData.ModelMetadata.IsNullableValueType)
             {
-                <option value=""></option>
+                <option value="">Any/None</option>
             }
             @foreach (var option in Html.GetEnumMembers(ViewData.ModelMetadata.ModelType))
             {

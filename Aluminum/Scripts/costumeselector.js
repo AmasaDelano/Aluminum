@@ -47,7 +47,8 @@
                     possible = true;
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
-                        if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue)) {
+                        if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue) &&
+                                costume[answer.dataField] !== null) {
                             possible = false;
                             break;
                         }
