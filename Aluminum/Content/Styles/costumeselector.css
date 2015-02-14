@@ -11,6 +11,12 @@
 table {
     margin: 10px;
 }
+.section {
+    margin-top: 20px;
+}
+#costume-properties {
+    max-width: 300px;
+}
 .input-group > span.input-group-addon {
     -moz-min-width: 90px;
     -ms-min-width: 90px;

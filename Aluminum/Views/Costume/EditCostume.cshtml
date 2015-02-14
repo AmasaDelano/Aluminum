@@ -8,7 +8,7 @@
 
 <div class="row">
     <h2>@(Model.Id == 0 ? "New" : Model.Name) Costume</h2>
-    <div class="col-md-6">
+    <div class="col-md-6 section">
 
         <form method="POST" enctype="multipart/form-data">
             <input type="hidden" value="@Model.Id" name="Id" />
@@ -36,7 +36,7 @@
                 </div>
             </fieldset>
             <br />
-            <fieldset style="max-width: 300px;">
+            <fieldset id="costume-properties">
                 @Html.EditorFor(e => e.GenderTypeId)
                 @Html.EditorFor(e => e.AgeRangeTypeId)
                 @Html.EditorFor(e => e.HairColorTypeId)
@@ -52,7 +52,7 @@
             </fieldset>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 section">
         @if (!string.IsNullOrEmpty(Model.ImageFileName))
         {
         <img src="@Html.GetCostumesImagesPath()@Model.ImageFileName"
