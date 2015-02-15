@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Aluminum.ViewModels;
 
 namespace Aluminum.Models
@@ -17,7 +14,19 @@ namespace Aluminum.Models
 
         public bool LogIn(UserViewModel user)
         {
-            return true;
+            var userEntity = _context.Users
+                .SingleOrDefault(e => e.UserName.ToLower() == user.UserName.ToLower());
+
+            // User not found -- cannot log in.
+            if (userEntity == null)
+            {
+                return false;
+            }
+
+            // User found -- log in successful if passwords match.
+            bool passwordsMatch = PasswordHash.ValidatePassword(user.Password, userEntity.HashedPassword);
+
+            return passwordsMatch;
         }
     }
 }

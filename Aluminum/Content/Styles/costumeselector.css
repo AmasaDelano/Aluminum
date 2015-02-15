@@ -20,6 +20,9 @@ table {
 #login-form input {
     margin-top: 10px;
 }
+.navbar-inverse {
+    background: transparent;
+}
 .input-group > span.input-group-addon {
     -moz-min-width: 90px;
     -ms-min-width: 90px;

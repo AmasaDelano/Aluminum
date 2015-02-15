@@ -21,11 +21,17 @@ namespace Aluminum.Models
             get { return Set<CostumeQuestion>(); }
         }
 
+        public DbSet<User> Users
+        {
+            get { return Set<User>(); }
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Tables
             modelBuilder.Entity<Costume>();
             modelBuilder.Entity<CostumeQuestion>();
+            modelBuilder.Entity<User>();
 
             // Conventions
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

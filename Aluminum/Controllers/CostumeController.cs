@@ -39,7 +39,7 @@ namespace Aluminum.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(UserViewModel user)
+        public ActionResult LogIn(UserViewModel user, string returnUrl)
         {
             if (user != null && ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace Aluminum.Controllers
                 {
                     CreateAuthTicket(user);
 
-                    return RedirectToAction("Admin");
+                    return Redirect(returnUrl);
                 }
             }
 
