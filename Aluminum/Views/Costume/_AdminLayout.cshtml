@@ -10,6 +10,30 @@
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#costume-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Admin", "Costume")">Costume Explorer</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="costume-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("LogOut", "Costume")">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         @RenderBody()
     </div>

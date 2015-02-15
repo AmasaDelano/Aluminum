@@ -17,6 +17,9 @@ table {
 #costume-properties {
     max-width: 300px;
 }
+#login-form input {
+    margin-top: 10px;
+}
 .input-group > span.input-group-addon {
     -moz-min-width: 90px;
     -ms-min-width: 90px;
