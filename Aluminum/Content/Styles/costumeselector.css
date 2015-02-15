@@ -30,6 +30,9 @@ table {
     -webkit-min-width: 90px;
     min-width: 90px;
 }
+.container {
+    margin-bottom: 50px;
+}
 button {
     display: inline-block;
 }
