@@ -232,6 +232,7 @@
     <Compile Include="Models\MembershipService.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\CostumeViewModel.cs" />
     <Compile Include="ViewModels\OptionViewModel.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />
@@ -256,6 +257,7 @@
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeEnum.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Costume\LogIn.cshtml" />
+    <Content Include="Views\Costume\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -9,6 +9,8 @@ namespace Aluminum.Controllers
 {
     public class CostumeController : Controller
     {
+        public const string AdminMessageKey = "AdminMessage";
+
         private readonly CostumeService _costumeService;
         private readonly MembershipService _membershipService;
 
@@ -49,11 +51,39 @@ namespace Aluminum.Controllers
                 {
                     CreateAuthTicket(user);
 
-                    return Redirect(returnUrl);
+                    if (string.IsNullOrWhiteSpace(returnUrl))
+                    {
+                        return RedirectToAction("Admin");
+                    }
+                    else
+                    {
+                        return Redirect(returnUrl);
+                    }
                 }
             }
 
             return RedirectToAction("LogIn");
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordViewModel changePassword)
+        {
+            bool changeSuccessful = _membershipService.ChangePassword(User.Identity.Name, changePassword);
+
+            if (changeSuccessful)
+            {
+                TempData[AdminMessageKey] = "Password changed!";
+
+                return RedirectToAction("Admin");
+            }
+
+            return RedirectToAction("ChangePassword");
         }
 
         private void CreateAuthTicket(UserViewModel user)
@@ -117,7 +147,7 @@ namespace Aluminum.Controllers
             {
                 _costumeService.SaveCostume(costume, imageFile, Server);
 
-                TempData["SavedMessage"] = string.Format("{0} costume saved!", costume.Name);
+                TempData[AdminMessageKey] = string.Format("{0} costume saved!", costume.Name);
 
                 return RedirectToAction("Admin");
             }

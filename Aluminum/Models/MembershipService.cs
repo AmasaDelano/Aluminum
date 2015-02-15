@@ -28,5 +28,34 @@ namespace Aluminum.Models
 
             return passwordsMatch;
         }
+
+        public bool ChangePassword(string userName, ChangePasswordViewModel passwords)
+        {
+            if (passwords.NewPassword != passwords.ConfirmNewPassword)
+            {
+                return false;
+            }
+
+            var userEntity = _context.Users
+                .SingleOrDefault(e => e.UserName.ToLower() == userName.ToLower());
+
+            if (userEntity == null)
+            {
+                return false;
+            }
+
+            bool passwordsMatch = PasswordHash.ValidatePassword(passwords.CurrentPassword, userEntity.HashedPassword);
+
+            if (!passwordsMatch)
+            {
+                return false;
+            }
+
+            userEntity.HashedPassword = PasswordHash.CreateHash(passwords.NewPassword);
+
+            _context.SaveChanges();
+
+            return true;
+        }
     }
 }

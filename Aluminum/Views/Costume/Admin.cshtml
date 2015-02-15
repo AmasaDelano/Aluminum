@@ -11,10 +11,10 @@
             <h2>Costumes</h2>
         </header>
         
-        @if (TempData["SavedMessage"] != null)
+        @if (TempData[CostumeController.AdminMessageKey] != null)
         {
             <p class="alert alert-success">
-                @TempData["SavedMessage"]
+                @TempData[CostumeController.AdminMessageKey]
             </p>
         }
 

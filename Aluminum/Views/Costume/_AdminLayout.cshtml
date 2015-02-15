@@ -29,9 +29,9 @@
                 <ul class="nav navbar-nav navbar-right">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    @*<li>
+                    <li>
                         <a href="@Url.Action("ChangePassword", "Costume")">Change Password</a>
-                    </li>*@
+                    </li>
                     <li>
                         <a href="@Url.Action("LogOut", "Costume")">Log Out</a>
                     </li>
