@@ -50,8 +50,8 @@
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
                         if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue) &&
-                                costume[answer.dataField] !== null &&
-                                answer.answerValue !== null) {
+                            costume[answer.dataField] !== null &&
+                            answer.answerValue !== null) {
                             possible = false;
                             break;
                         }
@@ -202,16 +202,14 @@
             alert("Problem getting costumes.");
         });
 
-        return {
-            getCurrentQuestion: getCurrentQuestion,
-            answered: answered,
-            answerCurrentQuestion: answerCurrentQuestion,
-            hasQuestionsLeft: hasQuestionsLeft,
-            revisitQuestion: revisitQuestion,
-            getBestCostume: getBestCostume,
-            isLoading: isLoading,
-            hasStarted: hasStarted,
-            start: start
-        };
+        this.getCurrentQuestion = getCurrentQuestion;
+        this.answered = answered;
+        this.answerCurrentQuestion = answerCurrentQuestion;
+        this.hasQuestionsLeft = hasQuestionsLeft;
+        this.revisitQuestion = revisitQuestion;
+        this.getBestCostume = getBestCostume;
+        this.isLoading = isLoading;
+        this.hasStarted = hasStarted;
+        this.start = start;
     }]);
 }());

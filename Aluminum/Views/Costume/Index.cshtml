@@ -29,7 +29,7 @@
                 </h5>
             </header>
 
-            <div ng-hide="questions.hasStarted()">
+            <div ng-show="!questions.isLoading() && !questions.hasStarted()">
                 <h3>
                     Please answer a few questions about yourself so we can suggest a costume for you.
                 </h3>
@@ -56,9 +56,9 @@
                 </div>
                 <div ng-show="questions.getCurrentQuestion().options.length > 0">
                     @*<input type="button"
-                        class="btn btn-lg btn-info"
-                        value="Any"
-                        ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
+                class="btn btn-lg btn-info"
+                value="Any"
+                ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
 
                     <input ng-repeat="option in questions.getCurrentQuestion().options"
                            type="button"
@@ -67,15 +67,17 @@
                            ng-click="questions.answerCurrentQuestion(option.value, option.name)" />
                 </div>
             </div>
-            <img src="~/Content/Images/loading.gif" alt="Loading..." ng-show="questions.isLoading()" />
-            <div ng-show="!questions.hasQuestionsLeft() && !questions.isLoading()">
+
+            <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
+
+            <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
                 <h1>
                     {{ questions.getBestCostume().name }}
                 </h1>
                 <img ng-src="@Html.GetCostumesImagesPath(){{ questions.getBestCostume().imageFileName }}"
                      alt="{{ questions.getBestCostume().name }}"
                      width="300"
-                     ng-show="!questions.hasQuestionsLeft() && !questions.isLoading() && questions.getBestCostume().imageFileName.length > 0" />
+                     ng-show="questions.getBestCostume().imageFileName.length > 0" />
             </div>
         </div>
     </div>
