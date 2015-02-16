@@ -173,9 +173,10 @@
             isLoading = function () {
                 return questions.length === 0 || costumes.length === 0;
             },
-            getBestCostume = function () {
+            getBestCostumes = function () {
                 var possibleCostumes = getPossibleCostumes();
-                return possibleCostumes[0];
+
+                return possibleCostumes;
             },
             hasStarted = function () {
                 return started;
@@ -207,7 +208,7 @@
         this.answerCurrentQuestion = answerCurrentQuestion;
         this.hasQuestionsLeft = hasQuestionsLeft;
         this.revisitQuestion = revisitQuestion;
-        this.getBestCostume = getBestCostume;
+        this.getBestCostumes = getBestCostumes;
         this.isLoading = isLoading;
         this.hasStarted = hasStarted;
         this.start = start;

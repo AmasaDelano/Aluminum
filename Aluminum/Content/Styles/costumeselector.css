@@ -8,6 +8,10 @@
 #costume-selector input {
     margin: 10px;
 }
+.costume-box {
+    display: inline-block;
+    margin: 20px;
+}
 table {
     margin: 10px;
 }

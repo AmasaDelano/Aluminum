@@ -35,7 +35,7 @@
                 </h3>
                 <input type="button"
                        class="btn btn-lg btn-success"
-                       value="Let's go!"
+                       value="Let's start!"
                        ng-click="questions.start()" />
             </div>
 
@@ -56,9 +56,9 @@
                 </div>
                 <div ng-show="questions.getCurrentQuestion().options.length > 0">
                     @*<input type="button"
-                class="btn btn-lg btn-info"
-                value="Any"
-                ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
+                        class="btn btn-lg btn-info"
+                        value="Any"
+                        ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
 
                     <input ng-repeat="option in questions.getCurrentQuestion().options"
                            type="button"
@@ -71,13 +71,15 @@
             <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
 
             <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
-                <h1>
-                    {{ questions.getBestCostume().name }}
-                </h1>
-                <img ng-src="@Html.GetCostumesImagesPath(){{ questions.getBestCostume().imageFileName }}"
-                     alt="{{ questions.getBestCostume().name }}"
-                     width="300"
-                     ng-show="questions.getBestCostume().imageFileName.length > 0" />
+                <div class="costume-box" ng-repeat="costume in questions.getBestCostumes()">
+                    <h1>
+                        {{ costume.name }}
+                    </h1>
+                    <img ng-src="@Html.GetCostumesImagesPath(){{ costume.imageFileName }}"
+                         alt="{{ costume.name }}"
+                         width="300"
+                         ng-show="costume.imageFileName.length > 0" />
+                </div>
             </div>
         </div>
     </div>
