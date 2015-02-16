@@ -1,4 +1,4 @@
-﻿namespace Aluminum.Models
+﻿namespace Aluminum.Data
 {
     public enum HairLengthType : byte
     {

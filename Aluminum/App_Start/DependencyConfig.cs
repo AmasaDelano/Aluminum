@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
-using Aluminum.Models;
+using Aluminum.Data;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Integration.WebApi;

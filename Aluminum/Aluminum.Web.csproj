@@ -14,8 +14,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aluminum</RootNamespace>
-    <AssemblyName>Aluminum</AssemblyName>
+    <RootNamespace>Aluminum.Web</RootNamespace>
+    <AssemblyName>Aluminum.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -220,18 +220,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgeRangeType.cs" />
-    <Compile Include="Models\Costume.cs" />
-    <Compile Include="Models\CostumeQuestion.cs" />
-    <Compile Include="Models\CostumeService.cs" />
-    <Compile Include="Models\CostumeSuggestion.cs" />
-    <Compile Include="Models\GenderType.cs" />
-    <Compile Include="Models\HairColorType.cs" />
-    <Compile Include="Models\HairLengthType.cs" />
-    <Compile Include="Models\PasswordHash.cs" />
-    <Compile Include="Models\RoomOfRequirement.cs" />
-    <Compile Include="Models\MembershipService.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Services\CostumeService.cs" />
+    <Compile Include="Services\PasswordHash.cs" />
+    <Compile Include="Services\MembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\CostumeAdminScreenViewModel.cs" />
@@ -269,7 +260,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Aluminum.Data\Aluminum.Data.csproj">
+      <Project>{1b2acf9f-cc19-4a2a-b8b6-3f5d9e04d8fd}</Project>
+      <Name>Aluminum.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -5,7 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 
-namespace Aluminum.Models
+namespace Aluminum.Data
 {
     public class RoomOfRequirement : DbContext
     {

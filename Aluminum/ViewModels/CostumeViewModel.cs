@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Aluminum.Data;
 using Aluminum.Extensions;
-using Aluminum.Models;
 
 namespace Aluminum.ViewModels
 {

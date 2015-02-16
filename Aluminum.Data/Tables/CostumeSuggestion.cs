@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Aluminum.Models
+namespace Aluminum.Data
 {
     public class CostumeSuggestion
     {
