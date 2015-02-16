@@ -224,6 +224,7 @@
     <Compile Include="Models\Costume.cs" />
     <Compile Include="Models\CostumeQuestion.cs" />
     <Compile Include="Models\CostumeService.cs" />
+    <Compile Include="Models\CostumeSuggestion.cs" />
     <Compile Include="Models\GenderType.cs" />
     <Compile Include="Models\HairColorType.cs" />
     <Compile Include="Models\HairLengthType.cs" />
@@ -258,6 +259,7 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Costume\LogIn.cshtml" />
     <Content Include="Views\Costume\ChangePassword.cshtml" />
+    <Content Include="Views\Costume\Suggest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,6 +17,9 @@
 </head>
 <body>
     <div class="container">
+        <p class="text-right">
+            <a href="@Url.Action("Suggest")">Suggest a Costume</a>
+        </p>
         <div ng-controller="QuestionController as questions" id="costume-selector">
             <header>
                 <h5 ng-repeat="answer in questions.answered"
@@ -43,6 +46,11 @@
                            ng-click="questions.answerCurrentQuestion(false)" />
                 </div>
                 <div ng-show="questions.getCurrentQuestion().options.length > 0">
+                    @*<input type="button"
+                           class="btn btn-lg btn-info"
+                           value="Any"
+                           ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
+                    
                     <input ng-repeat="option in questions.getCurrentQuestion().options"
                            type="button"
                            class="btn btn-lg btn-info"

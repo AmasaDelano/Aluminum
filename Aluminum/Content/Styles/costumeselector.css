@@ -17,8 +17,11 @@ table {
 #costume-properties {
     max-width: 300px;
 }
-#login-form input {
+#login-form input, #suggest-form input {
     margin-top: 10px;
+}
+textarea {
+    resize: none;
 }
 .navbar-inverse {
     background: transparent;

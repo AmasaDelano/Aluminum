@@ -27,6 +27,34 @@ namespace Aluminum.Controllers
         }
 
         [HttpGet]
+        public ActionResult Suggest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Suggest(string suggestion, string emailAddress)
+        {
+            if (!string.IsNullOrWhiteSpace(suggestion))
+            {
+                _costumeService.SendSuggestion(suggestion, emailAddress);
+
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Suggest");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult HideSuggestion(long suggestionId)
+        {
+            _costumeService.HideSuggestion(suggestionId, 1);
+
+            return RedirectToAction("Admin");
+        }
+
+        [HttpGet]
         public ActionResult LogIn()
         {
             return View();
@@ -66,12 +94,14 @@ namespace Aluminum.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult ChangePassword(ChangePasswordViewModel changePassword)
         {
             bool changeSuccessful = _membershipService.ChangePassword(User.Identity.Name, changePassword);

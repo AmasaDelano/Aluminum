@@ -90,6 +90,32 @@ namespace Aluminum.Models
             return costume;
         }
 
+        public void SendSuggestion(string suggestion, string emailAddress)
+        {
+            var costumeSuggestion = new CostumeSuggestion
+            {
+                EmailAddress = emailAddress,
+                Suggestion = suggestion
+            };
+
+            _context.CostumeSuggestions.Add(costumeSuggestion);
+            Save();
+        }
+
+        public void HideSuggestion(long suggestionId, int userId)
+        {
+            var suggestion = new CostumeSuggestion
+            {
+                CostumeSuggestionId = suggestionId
+            };
+
+            _context.CostumeSuggestions.Attach(suggestion);
+
+            suggestion.HiddenByUserId = userId;
+
+            Save();
+        }
+
         private string UploadFile(HttpPostedFileBase imageFile, string costumeName, HttpServerUtilityBase server)
         {
             string cleanedCostumeName = Regex.Replace(costumeName, @"[^\w]+", "").ToLower();

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Suggest a Costume</title>
+
+    @Styles.Render("~/css/bootstrap")
+
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
+
+</head>
+<body>
+    <div class="container">
+        <h2>Make a Suggestion</h2>
+        <form method="post" id="suggest-form">
+            <textarea name="Suggestion" id="Suggestion"
+                      class="form-control"
+                      placeholder="Suggest a new costume or correct something we got wrong about one we have!"></textarea>
+            <input type="text" name="EmailAddress" class="form-control" placeholder="Email address (optional)" />
+            <input type="submit" value="Submit Suggestion" class="btn btn-primary" />
+        </form>
+    </div>
+</body>
+</html>
