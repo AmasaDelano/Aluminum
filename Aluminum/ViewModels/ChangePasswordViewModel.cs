@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Aluminum.ViewModels
+namespace Aluminum.Web.ViewModels
 {
     public class ChangePasswordViewModel
     {

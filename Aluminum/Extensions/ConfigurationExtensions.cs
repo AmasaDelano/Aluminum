@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Aluminum.Extensions
+namespace Aluminum.Web.Extensions
 {
     public class ConfigurationExtensions
     {

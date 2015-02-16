@@ -1,4 +1,4 @@
-﻿namespace Aluminum.ViewModels
+﻿namespace Aluminum.Web.ViewModels
 {
     public class OptionViewModel
     {

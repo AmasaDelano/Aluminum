@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Aluminum
+namespace Aluminum.Web
 {
     public class FilterConfig
     {

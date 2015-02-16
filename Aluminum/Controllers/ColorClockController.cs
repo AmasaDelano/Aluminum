@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Aluminum.Controllers
+namespace Aluminum.Web.Controllers
 {
     public class ColorClockController : Controller
     {

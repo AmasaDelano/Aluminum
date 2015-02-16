@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using Aluminum.Models;
-using Aluminum.ViewModels;
+using Aluminum.Web.Models;
+using Aluminum.Web.ViewModels;
 
-namespace Aluminum.Controllers
+namespace Aluminum.Web.Controllers
 {
     public class CostumeApiController : ApiController
     {

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Aluminum
+namespace Aluminum.Web
 {
     public class JsonConfig
     {

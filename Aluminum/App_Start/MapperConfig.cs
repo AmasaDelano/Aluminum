@@ -1,8 +1,8 @@
 ﻿using Aluminum.Data;
-using Aluminum.ViewModels;
+using Aluminum.Web.ViewModels;
 using AutoMapper;
 
-namespace Aluminum
+namespace Aluminum.Web
 {
     public class MapperConfig
     {

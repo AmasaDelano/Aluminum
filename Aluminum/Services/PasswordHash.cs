@@ -29,7 +29,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Aluminum.Models
+namespace Aluminum.Web.Models
 {
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.

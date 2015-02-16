@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Aluminum.Data;
-using Aluminum.ViewModels;
+using Aluminum.Web.ViewModels;
 
-namespace Aluminum.Models
+namespace Aluminum.Web.Models
 {
     public class MembershipService
     {

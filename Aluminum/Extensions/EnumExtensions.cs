@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aluminum.Extensions
+namespace Aluminum.Web.Extensions
 {
     public class EnumExtensions
     {

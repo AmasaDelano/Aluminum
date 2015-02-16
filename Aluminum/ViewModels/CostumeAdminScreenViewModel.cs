@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Aluminum.ViewModels
+namespace Aluminum.Web.ViewModels
 {
     public class CostumeAdminScreenViewModel
     {

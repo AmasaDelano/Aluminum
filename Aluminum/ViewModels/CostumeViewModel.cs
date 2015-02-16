@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Aluminum.Data;
-using Aluminum.Extensions;
+using Aluminum.Web.Extensions;
 
-namespace Aluminum.ViewModels
+namespace Aluminum.Web.ViewModels
 {
     public class CostumeViewModel
     {

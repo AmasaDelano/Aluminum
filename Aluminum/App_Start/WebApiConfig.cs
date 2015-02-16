@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Aluminum
+namespace Aluminum.Web
 {
     public static class WebApiConfig
     {

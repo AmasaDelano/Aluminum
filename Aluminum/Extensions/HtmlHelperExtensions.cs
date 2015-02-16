@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Aluminum.Extensions
+namespace Aluminum.Web.Extensions
 {
     public static class HtmlHelperExtensions
     {

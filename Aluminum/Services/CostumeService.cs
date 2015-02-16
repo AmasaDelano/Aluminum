@@ -6,11 +6,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web;
 using Aluminum.Data;
-using Aluminum.Extensions;
-using Aluminum.ViewModels;
+using Aluminum.Web.Extensions;
+using Aluminum.Web.ViewModels;
 using AutoMapper;
 
-namespace Aluminum.Models
+namespace Aluminum.Web.Models
 {
     public class CostumeService
     {

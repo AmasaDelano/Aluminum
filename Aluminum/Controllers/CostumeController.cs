@@ -1,11 +1,10 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Aluminum.Models;
-using Aluminum.ViewModels;
+using Aluminum.Web.Models;
+using Aluminum.Web.ViewModels;
 
-namespace Aluminum.Controllers
+namespace Aluminum.Web.Controllers
 {
     public class CostumeController : Controller
     {

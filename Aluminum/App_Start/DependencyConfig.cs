@@ -6,7 +6,7 @@ using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Integration.WebApi;
 
-namespace Aluminum
+namespace Aluminum.Web
 {
     public class DependencyConfig
     {

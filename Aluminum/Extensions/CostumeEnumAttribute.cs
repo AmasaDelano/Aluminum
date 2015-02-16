@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Aluminum.Extensions
+namespace Aluminum.Web.Extensions
 {
     public class CostumeEnumAttribute : UIHintAttribute
     {
