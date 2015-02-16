@@ -50,8 +50,8 @@
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
                         if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue) &&
-                            costume[answer.dataField] !== null &&
-                            answer.answerValue !== null) {
+                                costume[answer.dataField] !== null &&
+                                answer.answerValue !== null) {
                             possible = false;
                             break;
                         }
