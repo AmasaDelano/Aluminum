@@ -102,8 +102,10 @@ namespace Aluminum.Models
             Save();
         }
 
-        public void HideSuggestion(long suggestionId, int userId)
+        public void HideSuggestion(long suggestionId, string userName)
         {
+            int userId = _context.Users.Single(e => e.UserName == userName).UserId;
+
             var suggestion = new CostumeSuggestion
             {
                 CostumeSuggestionId = suggestionId
@@ -158,6 +160,22 @@ namespace Aluminum.Models
         private void Save()
         {
             _context.SaveChanges();
+        }
+
+        public List<CostumeSuggestionViewModel> GetSuggestions()
+        {
+            var suggestions = _context.CostumeSuggestions
+                .Where(e => e.HiddenByUserId == null)
+                .OrderByDescending(e => e.DateSent)
+                .Select(e => new CostumeSuggestionViewModel
+                {
+                    Id = e.CostumeSuggestionId,
+                    DateSent = e.DateSent,
+                    Suggestion = e.Suggestion
+                })
+                .ToList();
+
+            return suggestions;
         }
     }
 }

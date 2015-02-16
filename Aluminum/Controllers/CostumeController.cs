@@ -49,7 +49,7 @@ namespace Aluminum.Controllers
         [Authorize]
         public ActionResult HideSuggestion(long suggestionId)
         {
-            _costumeService.HideSuggestion(suggestionId, 1);
+            _costumeService.HideSuggestion(suggestionId, User.Identity.Name);
 
             return RedirectToAction("Admin");
         }
@@ -139,9 +139,11 @@ namespace Aluminum.Controllers
         [Authorize]
         public ActionResult Admin()
         {
-            var costumes = _costumeService.GetCostumes();
+            var adminScreen = new CostumeAdminScreenViewModel();
+            adminScreen.Costumes = _costumeService.GetCostumes();
+            adminScreen.Suggestions = _costumeService.GetSuggestions();
 
-            return View(costumes);
+            return View(adminScreen);
         }
 
         [HttpPost]

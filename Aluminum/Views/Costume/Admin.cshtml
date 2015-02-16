@@ -1,4 +1,4 @@
-﻿@model List<CostumeViewModel>
+﻿@model CostumeAdminScreenViewModel
 
 @{
     ViewBag.Title = "Costume Admin Page";
@@ -6,7 +6,7 @@
 }
 
 <div class="row">
-    <div class="col-sm-8 col-md-6 col-lg-4">
+    <div class="col-md-6">
         <header>
             <h2>Costumes</h2>
         </header>
@@ -20,7 +20,7 @@
 
         <table class="table table-bordered table-responsive">
             <tbody>
-                @foreach (var costume in Model.OrderBy(e => e.Name))
+                @foreach (var costume in Model.Costumes.OrderBy(e => e.Name))
                 {
                     <tr>
                         <td>@costume.Name</td>
@@ -54,5 +54,34 @@
                 Add New Costume
             </button>
         </form>
+    </div>
+    <div class="col-md-6">
+        <header>
+            <h2>Suggestions</h2>
+        </header>
+        @if (!Model.Suggestions.Any())
+        {
+            <h4>None</h4>
+        }
+        <table class="table table-bordered table-responsive">
+            <tbody>
+                @foreach (var suggestion in Model.Suggestions.OrderByDescending(e => e.DateSent))
+                {
+                    <tr>
+                        <td>@suggestion.Suggestion</td>
+                        <td>Sent: @suggestion.DateSent.ToString()</td>
+                        <td>
+                            <form method="post" action="@Url.Action("HideSuggestion")">
+                                <input type="hidden" value="@suggestion.Id" name="suggestionId" />
+                                <button type="submit" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    Hide
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
