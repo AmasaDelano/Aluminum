@@ -52,6 +52,10 @@ namespace Aluminum.ViewModels
         [DisplayName("Is Human")]
         public bool IsHuman { get; set; }
 
+        [CostumeCheckBox]
+        [DisplayName("Has Glasses")]
+        public bool HasEyeglasses { get; set; }
+
         #endregion Properties
     }
 }

@@ -28,5 +28,7 @@ namespace Aluminum.Models
         public bool HasFacialHair { get; set; }
 
         public bool HasMagic { get; set; }
+
+        public bool HasEyeglasses { get; set; }
     }
 }
