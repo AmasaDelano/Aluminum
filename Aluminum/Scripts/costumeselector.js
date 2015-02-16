@@ -14,7 +14,9 @@
             },
             toInt = function (value) {
                 if (typeof value === 'boolean') {
-                    return value ? 1 : 0;
+                    // Apparently it's faster to use the equals sign than not to.
+                    // http://jsperf.com/boolean-int-conversion/2
+                    return value === true ? 1 : 0;
                 }
                 return value;
             },

@@ -24,7 +24,6 @@
             <header>
                 <h5 ng-repeat="answer in questions.answered"
                     ng-click="questions.revisitQuestion(answer)"
-                    ng-hide="questions.isLoading()"
                     class="notSelectable">
                     {{ answer.answeredText }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.answerValue, 'glyphicon-remove': !answer.answerValue }"></span>
                 </h5>
@@ -40,7 +39,7 @@
                        ng-click="questions.start()" />
             </div>
 
-            <div ng-show="questions.hasStarted() && questions.hasQuestionsLeft()" ng-hide="questions.isLoading()">
+            <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()">
                 <h3>
                     {{ questions.getCurrentQuestion().question }}
                 </h3>
@@ -57,9 +56,9 @@
                 </div>
                 <div ng-show="questions.getCurrentQuestion().options.length > 0">
                     @*<input type="button"
-                class="btn btn-lg btn-info"
-                value="Any"
-                ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
+                        class="btn btn-lg btn-info"
+                        value="Any"
+                        ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
 
                     <input ng-repeat="option in questions.getCurrentQuestion().options"
                            type="button"
