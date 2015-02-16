@@ -30,7 +30,17 @@
                 </h5>
             </header>
 
-            <div ng-show="questions.hasQuestionsLeft()" ng-hide="questions.isLoading()">
+            <div ng-hide="questions.hasStarted()">
+                <h3>
+                    Please answer a few questions about yourself so we can suggest a costume for you.
+                </h3>
+                <input type="button"
+                       class="btn btn-lg btn-info"
+                       value="Let's go!"
+                       ng-click="questions.start()" />
+            </div>
+
+            <div ng-show="questions.hasStarted() && questions.hasQuestionsLeft()" ng-hide="questions.isLoading()">
                 <h3>
                     {{ questions.getCurrentQuestion().question }}
                 </h3>
@@ -47,10 +57,10 @@
                 </div>
                 <div ng-show="questions.getCurrentQuestion().options.length > 0">
                     @*<input type="button"
-                           class="btn btn-lg btn-info"
-                           value="Any"
-                           ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
-                    
+                class="btn btn-lg btn-info"
+                value="Any"
+                ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
+
                     <input ng-repeat="option in questions.getCurrentQuestion().options"
                            type="button"
                            class="btn btn-lg btn-info"

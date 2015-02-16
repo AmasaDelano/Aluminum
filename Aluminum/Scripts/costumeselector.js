@@ -4,11 +4,11 @@
     var app = angular.module("costumeselector", []);
 
     app.controller("QuestionController", ['$http', function ($http) {
-        var that = this,
-            questions = [],
+        var questions = [],
             costumes = [],
             answered = [],
             currentQuestionIndex = -1,
+            started = false,
             getCurrentQuestion = function () {
                 return questions[currentQuestionIndex];
             },
@@ -174,6 +174,12 @@
             getBestCostume = function () {
                 var possibleCostumes = getPossibleCostumes();
                 return possibleCostumes[0];
+            },
+            hasStarted = function () {
+                return started;
+            },
+            start = function () {
+                started = true;
             };
 
         // Get question and costume data from the server.
@@ -194,14 +200,16 @@
             alert("Problem getting costumes.");
         });
 
-        that.getCurrentQuestion = getCurrentQuestion;
-        that.answered = answered;
-        that.answerCurrentQuestion = answerCurrentQuestion;
-        that.hasQuestionsLeft = hasQuestionsLeft;
-        that.revisitQuestion = revisitQuestion;
-        that.getBestCostume = getBestCostume;
-        that.isLoading = isLoading;
-
-        return that;
+        return {
+            getCurrentQuestion: getCurrentQuestion,
+            answered: answered,
+            answerCurrentQuestion: answerCurrentQuestion,
+            hasQuestionsLeft: hasQuestionsLeft,
+            revisitQuestion: revisitQuestion,
+            getBestCostume: getBestCostume,
+            isLoading: isLoading,
+            hasStarted: hasStarted,
+            start: start
+        };
     }]);
 }());

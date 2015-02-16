@@ -36,7 +36,8 @@ namespace Aluminum.Web.Models
                     if (e.DataField.EndsWith("Id"))
                     {
                         string enumName = e.DataField.Remove(e.DataField.Length - "Id".Length);
-                        var enumType = Assembly.GetExecutingAssembly().GetType("Aluminum.Models." + enumName);
+                        var enumType = Assembly.GetAssembly(typeof(RoomOfRequirement))
+                            .GetType("Aluminum.Data." + enumName);
                         var enumMembers = EnumExtensions.GetEnumMembers(enumType);
                         e.Options = enumMembers.Select(
                             m =>
