@@ -39,7 +39,7 @@
                        ng-click="questions.start()" />
             </div>
 
-            <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()">
+            <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()" class="question-box">
                 <h3>
                     {{ questions.getCurrentQuestion().question }}
                 </h3>
@@ -71,6 +71,12 @@
             <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
 
             <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
+                <div class="costume-box" ng-show="questions.getBestCostumes().length === 0">
+                    <h3>No costumes found. :(</h3>
+                    <h4>
+                        <a href="@Url.Action("Suggest")">Make a suggestion</a>
+                    </h4>
+                </div>
                 <div class="costume-box" ng-repeat="costume in questions.getBestCostumes()">
                     <h1>
                         {{ costume.name }}

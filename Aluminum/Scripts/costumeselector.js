@@ -174,8 +174,11 @@
                 return questions.length === 0 || costumes.length === 0;
             },
             getBestCostumes = function () {
-                var possibleCostumes = getPossibleCostumes();
+                if (hasQuestionsLeft()) {
+                    return [];
+                }
 
+                var possibleCostumes = getPossibleCostumes();
                 return possibleCostumes;
             },
             hasStarted = function () {
