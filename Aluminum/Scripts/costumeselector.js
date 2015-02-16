@@ -36,6 +36,26 @@
                 }
                 answered.push(question);
             },
+            answerMatchesCostume = function (answer, costume) {
+                var matches,
+                    costumeAnswer = costume[answer.dataField],
+                    answerAnswer = answer.answerValue,
+                    index;
+
+                if (costumeAnswer && costumeAnswer.length > 0) {
+                    matches = false;
+                    for (index = 0; index < costumeAnswer.length; costumeAnswer += 1) {
+                        if (toInt(costumeAnswer) === toInt(answerAnswer)) {
+                            matches = true;
+                            break;
+                        }
+                    }
+                } else {
+                    matches = toInt(costumeAnswer) === toInt(answerAnswer);
+                }
+
+                return matches;
+            },
             getPossibleCostumes = function () {
                 var possibleCostumes = [],
                     costumeIndex,
@@ -49,7 +69,7 @@
                     possible = true;
                     for (answerIndex = 0; answerIndex < answered.length; answerIndex += 1) {
                         answer = answered[answerIndex];
-                        if (toInt(costume[answer.dataField]) !== toInt(answer.answerValue) &&
+                        if (!answerMatchesCostume(answer, costume) &&
                                 costume[answer.dataField] !== null &&
                                 answer.answerValue !== null) {
                             possible = false;
@@ -84,6 +104,7 @@
                     costume,
                     ratingIndex,
                     rating,
+                    valueIndex,
                     answerValue,
                     questionRatings = [];
 
@@ -98,12 +119,21 @@
                     if (answered.indexOf(question) === -1) {
                         for (costumeIndex = 0; costumeIndex < possibleCostumes.length; costumeIndex += 1) {
                             costume = possibleCostumes[costumeIndex];
-                            answerValue = toInt(costume[question.dataField]);
+                            answerValue = costume[question.dataField];
                             rating = questionRatings[questionIndex];
-                            if (rating[answerValue] === undefined) {
-                                rating[answerValue] = 0;
+                            if (answerValue && answerValue.length > 0) {
+                                for (valueIndex = 0; valueIndex < answerValue.length; valueIndex += 1) {
+                                    if (rating[toInt(answerValue[valueIndex])] === undefined) {
+                                        rating[toInt(answerValue[valueIndex])] = 0;
+                                    }
+                                    rating[toInt(answerValue[valueIndex])] += 1;
+                                }
+                            } else {
+                                if (rating[toInt(answerValue)] === undefined) {
+                                    rating[toInt(answerValue)] = 0;
+                                }
+                                rating[toInt(answerValue)] += 1;
                             }
-                            rating[answerValue] += 1;
                         }
                     }
                 }

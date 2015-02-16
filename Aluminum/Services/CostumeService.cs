@@ -57,7 +57,7 @@ namespace Aluminum.Web.Models
 
         public List<CostumeViewModel> GetCostumes()
         {
-            var costumeEntities = _context.Costumes.ToList();
+            var costumeEntities = _context.Costumes.OrderBy(e => e.Name).ToList();
 
             var costumes = Mapper.Map<List<CostumeViewModel>>(costumeEntities);
 
