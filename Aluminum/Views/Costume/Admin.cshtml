@@ -63,7 +63,20 @@
             </tbody>
         </table>
         <script>
-            $("#costumes-table").dataTable({ paging: false, stateSave: true, language: { info: "", infoFiltered: "", search: "Search: " } });
+            $("#costumes-table").dataTable({
+                paging: false,
+                stateSave: true,
+                columns: [
+                    { searchable: true },
+                    { searchable: false },
+                    { searchable: false }
+                ],
+                language: {
+                    info: "",
+                    infoFiltered: "",
+                    search: "Search: "
+                }
+            });
         </script>
     </div>
     <div class="col-md-6">
