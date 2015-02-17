@@ -7,7 +7,9 @@
 
 
 <div class="row">
-    <h2>@(Model.Id == 0 ? "New" : Model.Name) Costume</h2>
+    <h2 class="col-xs-12">
+        @(Model.Id == 0 ? "New" : Model.Name) Costume
+    </h2>
     <div class="col-md-6 section">
 
         <form method="POST" enctype="multipart/form-data">
@@ -44,6 +46,7 @@
                 @Html.EditorFor(e => e.AgeRangeEnumList)
                 @Html.EditorFor(e => e.HairColorEnumList)
                 @Html.EditorFor(e => e.HairLengthEnumList)
+                @Html.EditorFor(e => e.SourceEnumList)
 
                 <br />
 

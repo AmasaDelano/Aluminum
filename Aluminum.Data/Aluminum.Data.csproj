@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tables\CostumeAgeRange.cs" />
+    <Compile Include="Tables\CostumeSource.cs" />
     <Compile Include="Tables\CostumeHairColor.cs" />
     <Compile Include="Tables\CostumeHairLength.cs" />
     <Compile Include="Types\AgeRangeType.cs" />

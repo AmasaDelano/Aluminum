@@ -1,6 +1,6 @@
-﻿namespace Aluminum.Data.Types
+﻿namespace Aluminum.Data
 {
-    public enum CostumeSourceType
+    public enum CostumeSourceType : byte
     {
         Book = 1,
         Movie = 2,

@@ -10,6 +10,7 @@ namespace Aluminum.Data
             AgeRanges = new List<CostumeAgeRange>();
             HairColors = new List<CostumeHairColor>();
             HairLengths = new List<CostumeHairLength>();
+            Sources = new List<CostumeSource>();
         }
 
         public short CostumeId { get; set; }
@@ -27,6 +28,8 @@ namespace Aluminum.Data
         public List<CostumeHairColor> HairColors { get; set; }
 
         public List<CostumeHairLength> HairLengths { get; set; }
+
+        public List<CostumeSource> Sources { get; set; }
 
         public bool IsFictional { get; set; }
 

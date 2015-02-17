@@ -54,6 +54,14 @@ namespace Aluminum.Web.ViewModels
         }
         public List<HairColorType> HairColors { get; set; }
 
+        [CostumeEnumList]
+        [DisplayName("Source")]
+        public EnumList SourceEnumList
+        {
+            get { return GetEnumList(e => e.Sources); }
+        }
+        public List<CostumeSourceType> Sources { get; set; }
+
         [CostumeCheckBox]
         [DisplayName("Has Facial Hair")]
         public bool HasFacialHair { get; set; }

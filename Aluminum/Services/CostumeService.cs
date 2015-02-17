@@ -62,6 +62,7 @@ namespace Aluminum.Web.Models
                 .Include(e => e.AgeRanges)
                 .Include(e => e.HairColors)
                 .Include(e => e.HairLengths)
+                .Include(e => e.Sources)
                 .OrderBy(e => e.Name).ToList();
 
             var costumes = Mapper.Map<List<CostumeViewModel>>(costumeEntities);
@@ -94,6 +95,7 @@ namespace Aluminum.Web.Models
                 .Include(e => e.AgeRanges)
                 .Include(e => e.HairColors)
                 .Include(e => e.HairLengths)
+                .Include(e => e.Sources)
                 .FirstOrDefault(e => e.CostumeId == costumeId) ?? new Costume();
 
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
@@ -162,7 +164,12 @@ namespace Aluminum.Web.Models
             }
             else
             {
-                var costumeEntity = _context.Costumes.Single(e => e.CostumeId == costume.Id);
+                var costumeEntity = _context.Costumes
+                    .Include(e => e.AgeRanges)
+                    .Include(e => e.HairColors)
+                    .Include(e => e.HairLengths)
+                    .Include(e => e.Sources)
+                    .Single(e => e.CostumeId == costume.Id);
                 Mapper.Map(costume, costumeEntity);
             }
             Save();

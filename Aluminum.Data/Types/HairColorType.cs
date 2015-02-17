@@ -5,6 +5,7 @@
         Black = 1,
         Brown = 2,
         Blonde = 3,
-        Red = 4
+        Red = 4,
+        White = 5
     }
 }
