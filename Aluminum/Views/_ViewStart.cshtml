@@ -1,0 +1,11 @@
+﻿@{
+    switch (ViewContext.Controller.GetType().Name)
+    {
+        case "CostumeController":
+            Layout = "~/Views/Costume/_Layout.cshtml";
+            break;
+        default:
+            Layout = null;
+            break;
+    }
+}

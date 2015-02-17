@@ -64,7 +64,7 @@ namespace Aluminum.Web.Controllers
         {
             RemoveAuthTicket();
 
-            return RedirectToAction("LogIn");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

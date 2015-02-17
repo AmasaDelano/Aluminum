@@ -1,25 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "Suggest a Costume Idea";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Suggest a Costume</title>
+<h2 class="col-xs-12">
+    Make a Suggestion
+</h2>
 
-    @Styles.Render("~/css/bootstrap")
+<div class="col-md-10 col-lg-8">
 
-    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
+    <form method="post" id="suggest-form">
 
-</head>
-<body>
-    <div class="container">
-        <h2>Make a Suggestion</h2>
-        <form method="post" id="suggest-form">
-            <textarea name="Suggestion" id="Suggestion"
-                      class="form-control"
-                      placeholder="Suggest a new costume or correct something we got wrong about one that we have!"></textarea>
-            <input type="email" name="EmailAddress" class="form-control" placeholder="Email address (optional)" />
-            <input type="submit" value="Submit Suggestion" class="btn btn-primary" />
-        </form>
-    </div>
-</body>
-</html>
+        <textarea name="Suggestion" id="Suggestion"
+                  class="form-control"
+                  placeholder="Suggest an idea for a new costume or correct something we got wrong about one that we have!"
+                  rows="3"></textarea>
+
+        <input type="email" name="EmailAddress" class="form-control" placeholder="Email address (optional)" />
+
+        <input type="submit" value="Submit Suggestion" class="btn btn-primary" />
+
+    </form>
+
+</div>

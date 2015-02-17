@@ -7,18 +7,22 @@
         var questions = [],
             costumes = [],
             answered = [],
-            currentQuestionIndex = -1,
+            currentQuestionIndex = 0,
             started = false,
             getCurrentQuestion = function () {
                 return questions[currentQuestionIndex];
             },
             toInt = function (value) {
-                if (typeof value === 'boolean') {
+                var type = typeof value;
+                if (type === 'boolean') {
                     // Apparently it's faster to use the equals sign than not to.
                     // http://jsperf.com/boolean-int-conversion/2
                     return value === true ? 1 : 0;
                 }
-                return value;
+                if (type === 'number') {
+                    return value;
+                }
+                return 0;
             },
             revisitQuestion = function (question) {
                 var questionIndex = questions.indexOf(question),
@@ -44,8 +48,8 @@
 
                 if (costumeAnswer && costumeAnswer.length > 0) {
                     matches = false;
-                    for (index = 0; index < costumeAnswer.length; costumeAnswer += 1) {
-                        if (toInt(costumeAnswer) === toInt(answerAnswer)) {
+                    for (index = 0; index < costumeAnswer.length; index += 1) {
+                        if (toInt(costumeAnswer[index]) === toInt(answerAnswer)) {
                             matches = true;
                             break;
                         }
@@ -152,7 +156,7 @@
                 // Take the highest value for each question, and make that the rating.
                 for (questionIndex = 0; questionIndex < questionRatings.length; questionIndex += 1) {
                     questionRatings[questionIndex] =
-                        questionRatings[questionIndex][getIndexOfHighestItem(questionRatings[questionIndex])];
+                        questionRatings[questionIndex][getIndexOfHighestItem(questionRatings[questionIndex])] || 0;
                 }
 
                 return questionRatings;

@@ -33,12 +33,22 @@ namespace Aluminum.Web.Models
             questions.ForEach(
                 e =>
                 {
-                    // If it ends with "Id", it's a type column and therefore an enum.
-                    if (e.DataField.EndsWith("Id"))
+                    Type propertyType = typeof(CostumeViewModel)
+                        .GetProperty(e.DataField).PropertyType;
+                    Type enumType = null;
+                    if (propertyType.IsGenericType)
                     {
-                        string enumName = e.DataField.Remove(e.DataField.Length - "Id".Length);
-                        var enumType = Assembly.GetAssembly(typeof(RoomOfRequirement))
-                            .GetType("Aluminum.Data." + enumName);
+                        if (propertyType.GetGenericTypeDefinition() == typeof(List<>))
+                        {
+                            enumType = propertyType.GetGenericArguments().First();
+                        }
+                        else if (propertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                        {
+                            enumType = Nullable.GetUnderlyingType(propertyType);
+                        }
+                    }
+                    if (enumType != null && enumType.IsEnum)
+                    {
                         var enumMembers = EnumExtensions.GetEnumMembers(enumType);
                         e.Options = enumMembers.Select(
                             m =>

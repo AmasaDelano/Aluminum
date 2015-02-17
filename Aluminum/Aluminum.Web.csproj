@@ -248,7 +248,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Costume\Admin.cshtml" />
     <Content Include="Views\Costume\EditCostume.cshtml" />
-    <Content Include="Views\Costume\_AdminLayout.cshtml" />
+    <Content Include="Views\Costume\_Layout.cshtml" />
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeCheckbox.cshtml" />
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeEnum.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
@@ -256,6 +256,7 @@
     <Content Include="Views\Costume\ChangePassword.cshtml" />
     <Content Include="Views\Costume\Suggest.cshtml" />
     <Content Include="Views\Costume\EditorTemplates\_EditCostumeEnumList.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

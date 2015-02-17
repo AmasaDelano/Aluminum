@@ -1,93 +1,78 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "Costume Explorer";
+}
 
-<html ng-app="costumeselector">
-<head>
-    <meta name="viewport" content="width=device-width" />
+@Scripts.Render("~/js/angular")
 
-    <title>Costume Selector</title>
+<script src="~/Scripts/costumeselector.js?v=@Html.Version()"></script>
 
-    @Styles.Render("~/css/bootstrap")
+<div ng-app="costumeselector">
+    <div ng-controller="QuestionController as questions" id="costume-selector">
+        <header>
+            <h5 ng-repeat="answer in questions.answered"
+                ng-click="questions.revisitQuestion(answer)"
+                class="notSelectable">
+                {{ answer.answeredText }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.answerValue, 'glyphicon-remove': !answer.answerValue }"></span>
+            </h5>
+        </header>
 
-    <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
+        <div ng-show="!questions.isLoading() && !questions.hasStarted()">
+            <h3>
+                Please answer a few questions about yourself so we can suggest a costume for you.
+            </h3>
+            <input type="button"
+                    class="btn btn-lg btn-success"
+                    value="Let's start!"
+                    ng-click="questions.start()" />
+        </div>
 
-    @Scripts.Render("~/js/bootstrap")
-    @Scripts.Render("~/js/angular")
-
-    <script src="~/Scripts/costumeselector.js?v=@Html.Version()"></script>
-</head>
-<body>
-    <div class="container">
-        <p class="text-right">
-            <a href="@Url.Action("Suggest")">Suggest a Costume</a>
-        </p>
-        <div ng-controller="QuestionController as questions" id="costume-selector">
-            <header>
-                <h5 ng-repeat="answer in questions.answered"
-                    ng-click="questions.revisitQuestion(answer)"
-                    class="notSelectable">
-                    {{ answer.answeredText }} <span class="glyphicon" ng-class="{ 'glyphicon-ok': !!answer.answerValue, 'glyphicon-remove': !answer.answerValue }"></span>
-                </h5>
-            </header>
-
-            <div ng-show="!questions.isLoading() && !questions.hasStarted()">
-                <h3>
-                    Please answer a few questions about yourself so we can suggest a costume for you.
-                </h3>
+        <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()" class="question-box">
+            <h3>
+                {{ questions.getCurrentQuestion().question }}
+            </h3>
+            <div ng-show="questions.getCurrentQuestion().options.length === 0">
                 <input type="button"
-                       class="btn btn-lg btn-success"
-                       value="Let's start!"
-                       ng-click="questions.start()" />
+                        class="btn btn-lg btn-success"
+                        value="Yes!"
+                        ng-click="questions.answerCurrentQuestion(true)" />
+
+                <input type="button"
+                        class="btn btn-lg btn-danger"
+                        value="No, thanks"
+                        ng-click="questions.answerCurrentQuestion(false)" />
             </div>
+            <div ng-show="questions.getCurrentQuestion().options.length > 0">
+                @*<input type="button"
+                    class="btn btn-lg btn-info"
+                    value="Any"
+                    ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
 
-            <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()" class="question-box">
-                <h3>
-                    {{ questions.getCurrentQuestion().question }}
-                </h3>
-                <div ng-show="questions.getCurrentQuestion().options.length === 0">
-                    <input type="button"
-                           class="btn btn-lg btn-success"
-                           value="Yes!"
-                           ng-click="questions.answerCurrentQuestion(true)" />
-
-                    <input type="button"
-                           class="btn btn-lg btn-danger"
-                           value="No, thanks"
-                           ng-click="questions.answerCurrentQuestion(false)" />
-                </div>
-                <div ng-show="questions.getCurrentQuestion().options.length > 0">
-                    @*<input type="button"
+                <input ng-repeat="option in questions.getCurrentQuestion().options"
+                        type="button"
                         class="btn btn-lg btn-info"
-                        value="Any"
-                        ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
-
-                    <input ng-repeat="option in questions.getCurrentQuestion().options"
-                           type="button"
-                           class="btn btn-lg btn-info"
-                           value="{{ option.name }}"
-                           ng-click="questions.answerCurrentQuestion(option.value, option.name)" />
-                </div>
+                        value="{{ option.name }}"
+                        ng-click="questions.answerCurrentQuestion(option.value, option.name)" />
             </div>
+        </div>
 
-            <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
+        <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
 
-            <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
-                <div class="costume-box" ng-show="questions.getBestCostumes().length === 0">
-                    <h3>No costumes found. :(</h3>
-                    <h4>
-                        <a href="@Url.Action("Suggest")">Make a suggestion</a>
-                    </h4>
-                </div>
-                <div class="costume-box" ng-repeat="costume in questions.getBestCostumes()">
-                    <h1>
-                        {{ costume.name }}
-                    </h1>
-                    <img ng-src="@Html.GetCostumesImagesPath(){{ costume.imageFileName }}"
-                         alt="{{ costume.name }}"
-                         width="300"
-                         ng-show="costume.imageFileName.length > 0" />
-                </div>
+        <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
+            <div class="costume-box" ng-show="questions.getBestCostumes().length === 0">
+                <h3>No costumes found. :(</h3>
+                <h4>
+                    <a href="@Url.Action("Suggest")">Make a suggestion</a>
+                </h4>
+            </div>
+            <div class="costume-box" ng-repeat="costume in questions.getBestCostumes()">
+                <h1>
+                    {{ costume.name }}
+                </h1>
+                <img ng-src="@Html.GetCostumesImagesPath(){{ costume.imageFileName }}"
+                        alt="{{ costume.name }}"
+                        width="300"
+                        ng-show="costume.imageFileName.length > 0" />
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>

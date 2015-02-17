@@ -8,6 +8,8 @@
     @Styles.Render("~/css/bootstrap")
     
     <link rel="stylesheet" type="text/css" href="~/Content/Styles/costumeselector.css?v=@Html.Version()" />
+
+    @Scripts.Render("~/js/bootstrap")
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -22,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="@Url.Action("Admin", "Costume")">Costume Explorer</a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Costume")">Costume Explorer</a>
             </div>
 
             <div class="collapse navbar-collapse" id="costume-navbar-collapse">
@@ -30,13 +32,19 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>
-                        <a href="@Url.Action("Index", "Costume")">Test</a>
+                        <a href="@Url.Action("Admin", "Costume")">Editor</a>
                     </li>
                     <li>
                         <a href="@Url.Action("ChangePassword", "Costume")">Change Password</a>
                     </li>
                     <li>
                         <a href="@Url.Action("LogOut", "Costume")">Log Out</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("Suggest", "Costume")">Suggest a Costume</a>
                     </li>
                 }
                 </ul>
