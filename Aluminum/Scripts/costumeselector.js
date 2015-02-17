@@ -9,6 +9,7 @@
             answered = [],
             currentQuestionIndex = 0,
             started = false,
+            errored = false,
             getCurrentQuestion = function () {
                 return questions[currentQuestionIndex];
             },
@@ -218,6 +219,9 @@
             hasStarted = function () {
                 return started;
             },
+            hasErrored = function () {
+                return errored;
+            },
             start = function () {
                 started = true;
             };
@@ -229,7 +233,7 @@
                 currentQuestionIndex = getNextQuestionIndex();
             }
         }).error(function () {
-            alert("Problem getting questions.");
+            errored = true;
         });
         $http.get("/api/costumeApi/GetCostumes").success(function (data) {
             costumes = data;
@@ -237,7 +241,7 @@
                 currentQuestionIndex = getNextQuestionIndex();
             }
         }).error(function () {
-            alert("Problem getting costumes.");
+            errored = true;
         });
 
         this.getCurrentQuestion = getCurrentQuestion;
@@ -247,6 +251,7 @@
         this.revisitQuestion = revisitQuestion;
         this.getBestCostumes = getBestCostumes;
         this.isLoading = isLoading;
+        this.hasErrored = hasErrored;
         this.hasStarted = hasStarted;
         this.start = start;
     }]);

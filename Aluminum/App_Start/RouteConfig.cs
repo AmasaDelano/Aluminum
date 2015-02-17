@@ -14,7 +14,7 @@ namespace Aluminum.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index" }
+                defaults: new { controller = "home", action = "index" }
             );
         }
     }

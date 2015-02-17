@@ -42,11 +42,6 @@
                         ng-click="questions.answerCurrentQuestion(false)" />
             </div>
             <div ng-show="questions.getCurrentQuestion().options.length > 0">
-                @*<input type="button"
-                    class="btn btn-lg btn-info"
-                    value="Any"
-                    ng-click="questions.answerCurrentQuestion(null, 'Any')" />*@
-
                 <input ng-repeat="option in questions.getCurrentQuestion().options"
                         type="button"
                         class="btn btn-lg btn-info"
@@ -55,7 +50,11 @@
             </div>
         </div>
 
-        <img ng-show="questions.isLoading()" src="~/Content/Images/loading.gif" alt="Loading..." />
+        <img ng-show="questions.isLoading() && !questions.hasErrored()" src="~/Content/Images/loading.gif" alt="Loading..." />
+        <div ng-show="questions.hasErrored()">
+            <h3>Error encountered.</h3>
+            <h5>Please refresh the page or try again later.</h5>
+        </div>
 
         <div ng-show="!questions.isLoading() && questions.hasStarted() && !questions.hasQuestionsLeft()">
             <div class="costume-box" ng-show="questions.getBestCostumes().length === 0">
