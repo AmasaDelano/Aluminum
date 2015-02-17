@@ -2,7 +2,7 @@
 using Aluminum.Data;
 using Aluminum.Web.ViewModels;
 
-namespace Aluminum.Web.Models
+namespace Aluminum.Web.Services
 {
     public class MembershipService
     {

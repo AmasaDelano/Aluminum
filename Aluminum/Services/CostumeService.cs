@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web;
 using Aluminum.Data;
@@ -11,7 +10,7 @@ using Aluminum.Web.Extensions;
 using Aluminum.Web.ViewModels;
 using AutoMapper;
 
-namespace Aluminum.Web.Models
+namespace Aluminum.Web.Services
 {
     public class CostumeService
     {

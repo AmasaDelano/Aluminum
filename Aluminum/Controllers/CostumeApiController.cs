@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using Aluminum.Web.Models;
+using Aluminum.Web.Services;
 using Aluminum.Web.ViewModels;
 
 namespace Aluminum.Web.Controllers

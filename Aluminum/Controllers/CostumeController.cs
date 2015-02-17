@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Aluminum.Web.Models;
+using Aluminum.Web.Services;
 using Aluminum.Web.ViewModels;
 
 namespace Aluminum.Web.Controllers
