@@ -11,6 +11,7 @@
     "ignore": [
         "/scripts/jquery",
         "/scripts/bootstrap",
+        "/scripts/DataTables",
         "/scripts/angular"
     ],
     "output": "Error",

@@ -4,6 +4,8 @@
     ViewBag.Title = "Costume Admin Page";
 }
 
+@Scripts.Render("~/js/datatables")
+
 <div class="row">
     <div class="col-md-6">
         <header>
@@ -16,8 +18,22 @@
                 @TempData[CostumeController.AdminMessageKey]
             </p>
         }
+        
+        <form method="GET" action="@Url.Action("EditCostume")" id="new-costume-form">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add New Costume
+            </button>
+        </form>
 
-        <table class="table table-bordered table-responsive">
+        <table id="costumes-table" class="table table-bordered table-responsive">
+            <thead>
+                <tr class="hidden">
+                    <th>Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach (var costume in Model.Costumes.OrderBy(e => e.Name))
                 {
@@ -46,13 +62,9 @@
                 }
             </tbody>
         </table>
-
-        <form method="GET" action="@Url.Action("EditCostume")">
-            <button type="submit" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus"></span>
-                Add New Costume
-            </button>
-        </form>
+        <script>
+            $("#costumes-table").dataTable({ paging: false, stateSave: true, language: { info: "", infoFiltered: "", search: "Search: " } });
+        </script>
     </div>
     <div class="col-md-6">
         <header>

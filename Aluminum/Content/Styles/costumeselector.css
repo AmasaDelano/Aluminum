@@ -10,10 +10,18 @@
 }
 .costume-box {
     display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 10px 20px;
+}
+.dataTables_filter {
+    float: right;
+    margin: 10px;
+}
+#new-costume-form {
+    float: left;
+    margin: 10px;
+}
+.dataTables_filter input {
+    color: black;
 }
 table {
     margin: 10px;

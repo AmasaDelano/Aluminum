@@ -27,6 +27,11 @@ namespace Aluminum.Web
                     "~/Scripts/bootstrap/bootstrap.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/js/datatables").Include(
+                    "~/Scripts/jquery/jquery-2.1.3.js",
+                    "~/Scripts/datatables/jquery.datatables.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/js/angular").Include(
                     "~/Scripts/angular/angular.js",
                     "~/Scripts/angular/angular-route.js"
