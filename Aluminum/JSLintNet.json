@@ -4,6 +4,7 @@
         "devel": true,
         "predef": {
             "$": false,
+            "jQuery": false,
             "angular": false
         }
     },

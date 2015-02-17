@@ -2,6 +2,8 @@
     ViewBag.Title = "Suggest a Costume Idea";
 }
 
+@Scripts.Render("~/js/jquery")
+
 <h2 class="col-xs-12">
     Make a Suggestion
 </h2>
@@ -9,16 +11,22 @@
 <div class="col-md-10 col-lg-8">
 
     <form method="post" id="suggest-form">
+        
+        <div class="form-group" style="width: 100%">
+            <textarea name="Suggestion" id="Suggestion"
+                      class="form-control"
+                      placeholder="Suggest an idea for a new costume or correct something we got wrong about one that we have!"
+                      rows="3"
+                      title="You haven't given us any suggestions yet!" required></textarea>
+        </div>
 
-        <textarea name="Suggestion" id="Suggestion"
-                  class="form-control"
-                  placeholder="Suggest an idea for a new costume or correct something we got wrong about one that we have!"
-                  rows="3"></textarea>
-
-        <input type="email" name="EmailAddress" class="form-control" placeholder="Email address (optional)" />
+        <input type="email" name="EmailAddress" class="form-control" placeholder="Email address (optional)" ignore/>
 
         <input type="submit" value="Submit Suggestion" class="btn btn-primary" />
 
     </form>
-
+    
+    <script>
+        $("#suggest-form").validate();
+    </script>
 </div>

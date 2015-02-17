@@ -16,14 +16,20 @@
             </h5>
         </header>
 
-        <div ng-show="!questions.isLoading() && !questions.hasStarted()">
+        <div ng-show="!questions.isLoading() && !questions.hasStarted()" class="text-center">
+            @if (Convert.ToBoolean(TempData["SubmittedSuggestion"]))
+            {
+                <p class="alert alert-success" style="display: inline-block;">
+                    Thank you for your suggestion! We will look at it as soon as we can.
+                </p>
+            }
             <h3>
                 Please answer a few questions about yourself so we can suggest a costume for you.
             </h3>
             <input type="button"
-                    class="btn btn-lg btn-success"
-                    value="Let's start!"
-                    ng-click="questions.start()" />
+                   class="btn btn-lg btn-success"
+                   value="Let's start!"
+                   ng-click="questions.start()" />
         </div>
 
         <div ng-show="!questions.isLoading() && questions.hasStarted() && questions.hasQuestionsLeft()" class="question-box">

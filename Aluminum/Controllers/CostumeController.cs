@@ -38,6 +38,8 @@ namespace Aluminum.Web.Controllers
             {
                 _costumeService.SendSuggestion(suggestion, emailAddress);
 
+                TempData["SubmittedSuggestion"] = true;
+
                 return RedirectToAction("Index");
             }
 
