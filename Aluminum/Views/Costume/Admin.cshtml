@@ -68,7 +68,14 @@
                 @foreach (var suggestion in Model.Suggestions.OrderByDescending(e => e.DateSent))
                 {
                     <tr>
-                        <td>@suggestion.Suggestion</td>
+                        <td>
+                            @suggestion.Suggestion
+                            @if (!string.IsNullOrEmpty(suggestion.Email))
+                            {
+                            <br/>
+                            <em>(@suggestion.Email)</em>
+                            }
+                        </td>
                         <td>Sent: @suggestion.DateSent.ToString()</td>
                         <td>
                             <form method="post" action="@Url.Action("HideSuggestion")">

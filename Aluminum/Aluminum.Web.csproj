@@ -212,6 +212,7 @@
     <Compile Include="Controllers\CostumeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\ConfigurationExtensions.cs" />
+    <Compile Include="Extensions\CostumeEnumListAttribute.cs" />
     <Compile Include="Extensions\CostumeEnumAttribute.cs" />
     <Compile Include="Extensions\CostumeCheckBoxAttribute.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="ViewModels\CostumeAdminScreenViewModel.cs" />
     <Compile Include="ViewModels\CostumeSuggestionViewModel.cs" />
     <Compile Include="ViewModels\CostumeViewModel.cs" />
+    <Compile Include="ViewModels\EnumList.cs" />
     <Compile Include="ViewModels\OptionViewModel.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
@@ -253,6 +255,7 @@
     <Content Include="Views\Costume\LogIn.cshtml" />
     <Content Include="Views\Costume\ChangePassword.cshtml" />
     <Content Include="Views\Costume\Suggest.cshtml" />
+    <Content Include="Views\Costume\EditorTemplates\_EditCostumeEnumList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

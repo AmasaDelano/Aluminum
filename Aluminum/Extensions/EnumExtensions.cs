@@ -6,23 +6,23 @@ namespace Aluminum.Web.Extensions
 {
     public class EnumExtensions
     {
-        public static List<Enum> GetEnumMembers(Type propertyEnumType)
+        public static List<Enum> GetEnumMembers(Type enumType)
         {
-            var enumType = propertyEnumType;
+            var propertyEnumType = enumType;
 
-            if (Nullable.GetUnderlyingType(enumType) != null && Nullable.GetUnderlyingType(enumType).IsEnum)
+            if (Nullable.GetUnderlyingType(propertyEnumType) != null && Nullable.GetUnderlyingType(propertyEnumType).IsEnum)
             {
-                enumType = Nullable.GetUnderlyingType(enumType);
+                propertyEnumType = Nullable.GetUnderlyingType(propertyEnumType);
             }
 
-            if (!enumType.IsEnum)
+            if (!propertyEnumType.IsEnum)
             {
                 throw new ArgumentException(
-                    string.Format("propertyEnumType must be a type of Enum, not a {0}.", enumType.FullName),
-                    "propertyEnumType");
+                    string.Format("enumType must be a type of Enum, not a {0}.", propertyEnumType.Name),
+                    "enumType");
             }
 
-            var enumMembers = Enum.GetValues(enumType)
+            var enumMembers = Enum.GetValues(propertyEnumType)
                 .Cast<Enum>()
                 .ToList();
 

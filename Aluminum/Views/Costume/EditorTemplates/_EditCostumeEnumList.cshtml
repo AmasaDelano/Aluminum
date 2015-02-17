@@ -1,0 +1,20 @@
+﻿@model EnumList
+           
+<div class="input-group">
+    <label class="form-control text-right" style="height: @(Model.GetEnumMembers().Count * 25)px;">
+        @ViewData.ModelMetadata.DisplayName
+    </label>
+    <div class="input-group-addon">
+        @foreach (var option in Model.GetEnumMembers())
+        {
+            <div class="text-right">
+                <label for="@option.ToString()">@option.ToString()</label>
+                <input type="checkbox"
+                       id="@option.ToString()"
+                       name="@Model.PropertyName"
+                       value="@Convert.ToByte(option)"
+                       @(Model.Options.Contains(option) ? "checked=\"checked\"" : "")>
+            </div>
+        }
+    </div>
+</div>

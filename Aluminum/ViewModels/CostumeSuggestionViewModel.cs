@@ -9,5 +9,7 @@ namespace Aluminum.Web.ViewModels
         public string Suggestion { get; set; }
 
         public DateTime DateSent { get; set; }
+
+        public string Email { get; set; }
     }
 }

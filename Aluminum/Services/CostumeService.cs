@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -57,7 +58,11 @@ namespace Aluminum.Web.Models
 
         public List<CostumeViewModel> GetCostumes()
         {
-            var costumeEntities = _context.Costumes.OrderBy(e => e.Name).ToList();
+            var costumeEntities = _context.Costumes
+                .Include(e => e.AgeRanges)
+                .Include(e => e.HairColors)
+                .Include(e => e.HairLengths)
+                .OrderBy(e => e.Name).ToList();
 
             var costumes = Mapper.Map<List<CostumeViewModel>>(costumeEntities);
 
@@ -85,7 +90,11 @@ namespace Aluminum.Web.Models
 
         public CostumeViewModel GetCostume(short costumeId)
         {
-            var costumeEntity = _context.Costumes.FirstOrDefault(e => e.CostumeId == costumeId) ?? new Costume();
+            var costumeEntity = _context.Costumes
+                .Include(e => e.AgeRanges)
+                .Include(e => e.HairColors)
+                .Include(e => e.HairLengths)
+                .FirstOrDefault(e => e.CostumeId == costumeId) ?? new Costume();
 
             var costume = Mapper.Map<CostumeViewModel>(costumeEntity);
 
@@ -173,6 +182,7 @@ namespace Aluminum.Web.Models
                 {
                     Id = e.CostumeSuggestionId,
                     DateSent = e.DateSent,
+                    Email = e.EmailAddress,
                     Suggestion = e.Suggestion
                 })
                 .ToList();

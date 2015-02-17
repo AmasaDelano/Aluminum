@@ -46,10 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tables\CostumeAgeRange.cs" />
+    <Compile Include="Tables\CostumeHairColor.cs" />
+    <Compile Include="Tables\CostumeHairLength.cs" />
     <Compile Include="Types\AgeRangeType.cs" />
     <Compile Include="Tables\Costume.cs" />
     <Compile Include="Tables\CostumeQuestion.cs" />
     <Compile Include="Tables\CostumeSuggestion.cs" />
+    <Compile Include="Types\CostumeSourceType.cs" />
     <Compile Include="Types\GenderType.cs" />
     <Compile Include="Types\HairColorType.cs" />
     <Compile Include="Types\HairLengthType.cs" />

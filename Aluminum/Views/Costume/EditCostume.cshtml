@@ -38,9 +38,12 @@
             <br />
             <fieldset id="costume-properties">
                 @Html.EditorFor(e => e.GenderTypeId)
-                @Html.EditorFor(e => e.AgeRangeTypeId)
-                @Html.EditorFor(e => e.HairColorTypeId)
-                @Html.EditorFor(e => e.HairLengthTypeId)
+
+                <br/>
+
+                @Html.EditorFor(e => e.AgeRangeEnumList)
+                @Html.EditorFor(e => e.HairColorEnumList)
+                @Html.EditorFor(e => e.HairLengthEnumList)
 
                 <br />
 

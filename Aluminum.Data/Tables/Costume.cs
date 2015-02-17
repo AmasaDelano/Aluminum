@@ -1,8 +1,17 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+
 namespace Aluminum.Data
 {
     public partial class Costume
     {
+        public Costume()
+        {
+            AgeRanges = new List<CostumeAgeRange>();
+            HairColors = new List<CostumeHairColor>();
+            HairLengths = new List<CostumeHairLength>();
+        }
+
         public short CostumeId { get; set; }
 
         [MaxLength(50)]
@@ -13,11 +22,11 @@ namespace Aluminum.Data
 
         public GenderType? GenderTypeId { get; set; }
 
-        public AgeRangeType? AgeRangeTypeId { get; set; }
+        public List<CostumeAgeRange> AgeRanges { get; set; }
 
-        public HairColorType? HairColorTypeId { get; set; }
+        public List<CostumeHairColor> HairColors { get; set; }
 
-        public HairLengthType? HairLengthTypeId { get; set; }
+        public List<CostumeHairLength> HairLengths { get; set; }
 
         public bool IsFictional { get; set; }
 
