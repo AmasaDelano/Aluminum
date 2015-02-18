@@ -231,6 +231,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # Sensitive Files
-*Web.Release.Config
-*Web.Debug.Config
+Web*.Config
 *.pubxml
