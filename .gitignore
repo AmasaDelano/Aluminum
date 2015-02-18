@@ -229,7 +229,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# Sensitive Files
-Web*.Config
-*.pubxml
