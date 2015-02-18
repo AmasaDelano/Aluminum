@@ -1,10 +1,10 @@
 ﻿@model bool
 
 <div class="input-group">
-    <label class="form-control text-right" for="@ViewData.ModelMetadata.PropertyName">
+    <label class="input-group-addon text-right" for="@ViewData.ModelMetadata.PropertyName" style="width: 100%;">
         @ViewData.ModelMetadata.DisplayName
     </label>
-    <label class="input-group-addon" for="@ViewData.ModelMetadata.PropertyName">
+    <label class="form-control" for="@ViewData.ModelMetadata.PropertyName">
         <input type="checkbox" id="@ViewData.ModelMetadata.PropertyName"
                name="@ViewData.ModelMetadata.PropertyName"
                value="true"

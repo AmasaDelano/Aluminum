@@ -1,22 +1,21 @@
 ﻿@model Enum
            
 <div class="input-group">
-    <label class="form-control text-right" for="@ViewData.ModelMetadata.PropertyName">
+    <label class="input-group-addon text-right" for="@ViewData.ModelMetadata.PropertyName">
         @ViewData.ModelMetadata.DisplayName
     </label>
-    <label class="input-group-addon" for="@ViewData.ModelMetadata.PropertyName">
-        <select name="@ViewData.ModelMetadata.PropertyName" >
-            @if (ViewData.ModelMetadata.IsNullableValueType)
-            {
-                <option value="">Any</option>
-            }
-            @foreach (var option in Html.GetEnumMembers(ViewData.ModelMetadata.ModelType))
-            {
-                <option value="@Convert.ToByte(option)"
+    <select class="form-control"
+            name="@ViewData.ModelMetadata.PropertyName">
+        @if (ViewData.ModelMetadata.IsNullableValueType)
+        {
+            <option value="">Any</option>
+        }
+        @foreach (var option in Html.GetEnumMembers(ViewData.ModelMetadata.ModelType))
+        {
+            <option value="@Convert.ToByte(option)"
                     @(Equals(ViewData.Model, option) ? "selected=\"selected\"" : "")>
-                    @option.GetDisplayName()
-                </option>
-            }
-        </select>
-    </label>
+                @option.GetDisplayName()
+            </option>
+        }
+    </select>
 </div>
