@@ -6,6 +6,7 @@
         Brown = 2,
         Blonde = 3,
         Red = 4,
-        White = 5
+        White = 5,
+        Grey = 6
     }
 }
