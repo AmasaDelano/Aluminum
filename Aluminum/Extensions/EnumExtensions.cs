@@ -1,12 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Aluminum.Web.Extensions
 {
-    public class EnumExtensions
+    public static class EnumExtensions
     {
-        public static List<Enum> GetEnumMembers(Type enumType)
+        public static string GetDisplayName(this Enum enumMember)
+        {
+            if (enumMember == null)
+            {
+                return string.Empty;
+            }
+
+            Type enumType = enumMember.GetType();
+            var display = enumMember.GetType()
+                .GetMember(enumMember.ToString())
+                .First()
+                .GetCustomAttributes(false)
+                .OfType<DisplayAttribute>()
+                .FirstOrDefault();
+
+            if (display == null)
+            {
+                return enumMember.ToString();
+            }
+
+            return display.Name;
+        }
+
+        public static List<Enum> GetEnumMembers(this Type enumType)
         {
             var propertyEnumType = enumType;
 

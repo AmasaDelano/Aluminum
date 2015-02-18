@@ -14,7 +14,7 @@
             {
                 <option value="@Convert.ToByte(option)"
                     @(Equals(ViewData.Model, option) ? "selected=\"selected\"" : "")>
-                    @option.ToString()
+                    @option.GetDisplayName()
                 </option>
             }
         </select>

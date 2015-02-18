@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Types\JobType.cs" />
+    <Compile Include="Types\CostumeOriginType.cs" />
     <Compile Include="Tables\CostumeAgeRange.cs" />
     <Compile Include="Tables\CostumeSource.cs" />
     <Compile Include="Tables\CostumeHairColor.cs" />

@@ -23,6 +23,10 @@ namespace Aluminum.Data
 
         public GenderType? GenderTypeId { get; set; }
 
+        public CostumeOriginType? CostumeOriginTypeId { get; set; }
+
+        public JobType? JobTypeId { get; set; }
+
         public List<CostumeAgeRange> AgeRanges { get; set; }
 
         public List<CostumeHairColor> HairColors { get; set; }

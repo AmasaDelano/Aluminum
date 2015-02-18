@@ -26,8 +26,8 @@
 table {
     margin: 10px;
 }
-input, input[type=text], td {
-    font-size: 1.2em;
+input, input[type=text], input[type=email], input[type=password], textarea.form-control, td {
+    font-size: 1.1em;
 }
 h2 {
     margin-bottom: 20px;

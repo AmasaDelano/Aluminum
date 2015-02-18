@@ -8,7 +8,7 @@
         @foreach (var option in Model.GetEnumMembers())
         {
             <div class="text-right">
-                <label for="@option.ToString()">@option.ToString()</label>
+                <label for="@option.GetDisplayName()">@option.ToString()</label>
                 <input type="checkbox"
                        id="@option.ToString()"
                        name="@Model.PropertyName"

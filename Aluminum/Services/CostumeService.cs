@@ -53,7 +53,7 @@ namespace Aluminum.Web.Services
                             m =>
                                 new OptionViewModel
                                 {
-                                    Name = m.ToString(),
+                                    Name = m.GetDisplayName(),
                                     Value = Convert.ToByte(m)
                                 })
                             .ToList();
